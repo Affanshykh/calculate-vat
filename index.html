@@ -11,7 +11,7 @@
     <!-- Google Fonts -->
     <link rel="preconnect" href="https://fonts.googleapis.com">
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-    <link href="https://fonts.googleapis.com/css2?family=Outfit:wght@300;400;600;800&family=Plus+Jakarta+Sans:wght@300;400;600;700&display=swap" rel="stylesheet">
+    <link href="https://fonts.googleapis.com/css2?family=Outfit:wght@300;400;600;800&display=swap" rel="stylesheet">
     
     <!-- Tailwind CSS -->
     <script src="https://cdn.tailwindcss.com"></script>
@@ -20,7 +20,7 @@
             theme: {
                 extend: {
                     fontFamily: {
-                        sans: ['Plus Jakarta Sans', 'sans-serif'],
+                        sans: ['Outfit', 'sans-serif'],
                         outfit: ['Outfit', 'sans-serif'],
                     }
                 }
@@ -38,7 +38,7 @@
             inset: 0;
             border-radius: inherit;
             padding: 1px;
-            background: linear-gradient(to bottom right, rgba(59, 130, 246, 0.4), rgba(139, 92, 246, 0.4));
+            background: linear-gradient(to bottom right, rgba(168, 85, 247, 0.4), rgba(236, 72, 153, 0.4));
             -webkit-mask: linear-gradient(#fff 0 0) content-box, linear-gradient(#fff 0 0);
             -webkit-mask-composite: xor;
             mask-composite: exclude;
@@ -96,12 +96,12 @@
 }
     </script>
 </head>
-<body class="bg-slate-950 text-slate-100 font-sans antialiased selection:bg-blue-500 selection:text-white min-h-screen flex flex-col">
+<body class="bg-slate-950 text-slate-100 font-sans antialiased selection:bg-purple-500 selection:text-white min-h-screen flex flex-col">
 
     <!-- Glowing Background blobs -->
     <div class="fixed top-0 left-0 w-full h-full overflow-hidden pointer-events-none -z-10">
-        <div class="absolute top-[-20%] left-[-10%] w-[600px] h-[600px] rounded-full bg-blue-500/10 blur-[120px] animate-pulse"></div>
-        <div class="absolute bottom-[-10%] right-[-10%] w-[500px] h-[500px] rounded-full bg-purple-500/10 blur-[100px] animate-pulse" style="animation-duration: 8s;"></div>
+        <div class="absolute top-[-20%] left-[-10%] w-[600px] h-[600px] rounded-full bg-purple-500/10 blur-[120px] animate-pulse"></div>
+        <div class="absolute bottom-[-10%] right-[-10%] w-[500px] h-[500px] rounded-full bg-pink-500/10 blur-[100px] animate-pulse" style="animation-duration: 8s;"></div>
     </div>
 
     <!-- Header / Nav -->
@@ -109,13 +109,13 @@
         <div class="max-w-6xl mx-auto px-6 py-4 flex justify-between items-center">
             <div class="flex items-center gap-2">
                 <!-- Clock Icon -->
-                <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="text-blue-500 w-6 h-6"><circle cx="12" cy="12" r="10"/><polyline points="12 6 12 12 16 14"/></svg>
+                <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="text-purple-500 w-6 h-6"><circle cx="12" cy="12" r="10"/><polyline points="12 6 12 12 16 14"/></svg>
                 <span class="font-outfit font-extrabold tracking-tight text-lg uppercase italic text-white">
-                    Uhrzeit-Tools<span class="text-blue-500">.de</span> Partner
+                    Dezimalzeit<span class="text-purple-500">.de</span> Partner
                 </span>
             </div>
             <div>
-                <a href="https://calculate-vat.com/" target="_blank" rel="noopener" class="glow-effect bg-blue-500/10 hover:bg-blue-500/20 text-blue-400 font-semibold px-4 py-2 rounded-xl text-xs uppercase tracking-wider transition-all duration-300">
+                <a href="https://calculate-vat.com/" target="_blank" rel="noopener" class="glow-effect bg-purple-500/10 hover:bg-purple-500/20 text-purple-400 hover:text-purple-300 font-semibold px-4 py-2 rounded-xl text-xs uppercase tracking-wider transition-all duration-300">
                     Zum Hauptrechner &rarr;
                 </a>
             </div>
@@ -127,7 +127,7 @@
         
         <!-- Hero Section -->
         <div class="text-center mb-16">
-            <span class="text-blue-500 font-bold uppercase text-xs tracking-widest bg-blue-500/10 px-3 py-1 rounded-full border border-blue-500/25 mb-4 inline-block">
+            <span class="text-purple-400 hover:text-purple-300 font-bold uppercase text-xs tracking-widest bg-purple-500/10 hover:bg-purple-500/20 px-3 py-1 rounded-full border border-purple-500/10 hover:border-purple-500/20 mb-4 inline-block">
                 Information &amp; Praxis-Tipps
             </span>
             <h1 class="text-4xl md:text-5xl font-outfit font-black tracking-tight leading-none text-white mb-6 italic">
@@ -138,6 +138,12 @@
             </p>
         </div>
 
+        <!-- Featured AI Generated Image -->
+        <div class="mb-16 rounded-3xl overflow-hidden border border-purple-500/10 hover:border-purple-500/20 shadow-2xl relative group max-w-3xl mx-auto">
+            <img src="https://image.pollinations.ai/prompt/Zeitrechner%20Arbeit%20corporate%20dark%20minimalist%20design%2C%20vector%20tech%20illustration" alt="Zeitrechner Arbeit - Arbeitszeiten berechnen leicht gemacht" class="w-full h-[380px] object-cover group-hover:scale-[1.01] transition-transform duration-700">
+            <div class="absolute inset-0 bg-gradient-to-t from-slate-950/70 via-transparent to-transparent"></div>
+        </div>
+
         <!-- Call to Action Banner -->
         <div class="glow-effect p-8 md:p-10 rounded-3xl bg-slate-900/50 border border-white/5 shadow-2xl backdrop-blur-sm mb-16 text-center">
             <h3 class="text-2xl font-outfit font-extrabold text-white mb-4">
@@ -146,7 +152,7 @@
             <p class="text-slate-400 mb-8 max-w-xl mx-auto text-sm leading-relaxed">
                 Nutzen Sie unseren voll funktionsfähigen, kostenlosen Online-Arbeitszeitrechner auf der Hauptseite. Tragen Sie einfach Arbeitszeiten und Pausen ein und erhalten Sie das Ergebnis sofort dezimal und in Stunden/Minuten!
             </p>
-            <a href="https://calculate-vat.com/" target="_blank" rel="noopener" class="inline-flex items-center gap-2 bg-gradient-to-r from-blue-600 to-purple-600 hover:from-blue-500 hover:to-purple-500 text-white font-bold px-8 py-4 rounded-2xl shadow-xl shadow-blue-500/15 transition-all duration-300 transform hover:scale-[1.02]">
+            <a href="https://calculate-vat.com/" target="_blank" rel="noopener" class="inline-flex items-center gap-2 bg-gradient-to-r from-purple-600 to-pink-600 hover:from-purple-500 hover:to-pink-500 shadow-purple-500/15 text-white font-bold px-8 py-4 rounded-2xl shadow-xl transition-all duration-300 transform hover:scale-[1.02]">
                 <span>Arbeitszeitrechner Online starten</span>
                 <svg xmlns="http://www.w3.org/2000/svg" width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round" class="w-4 h-4"><line x1="5" y1="12" x2="19" y2="12"/><polyline points="12 5 19 12 12 19"/></svg>
             </a>
@@ -155,10 +161,10 @@
         <!-- Content Body (Dynamic Cards) -->
         <div class="space-y-12">
             
-        <article class="glow-effect p-8 rounded-3xl border border-blue-500/10 bg-blue-500/[0.01] backdrop-blur-sm">
+        <article class="glow-effect p-8 rounded-3xl border border-purple-500/10 hover:border-purple-500/20 bg-slate-900/10 backdrop-blur-sm">
           <div class="flex items-center gap-3 mb-4">
             <div class="p-3 bg-white/5 rounded-2xl">
-              <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="text-blue-500 w-6 h-6"><circle cx="12" cy="12" r="10"/><polyline points="12 6 12 12 16 14"/></svg>
+              <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="text-purple-500 w-6 h-6"><circle cx="12" cy="12" r="10"/><polyline points="12 6 12 12 16 14"/></svg>
             </div>
             <h3 class="text-xl md:text-2xl font-outfit font-bold text-white">Was ist ein Zeitrechner für Arbeit?</h3>
           </div>
@@ -167,7 +173,7 @@
           </p>
         </article>
       
-        <article class="glow-effect p-8 rounded-3xl border border-purple-500/10 bg-purple-500/[0.01] backdrop-blur-sm">
+        <article class="glow-effect p-8 rounded-3xl border border-white/5 bg-slate-900/5 backdrop-blur-sm">
           <div class="flex items-center gap-3 mb-4">
             <div class="p-3 bg-white/5 rounded-2xl">
               <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="text-purple-500 w-6 h-6"><path d="M12 22s8-4 8-10V5l-8-3-8 3v7c0 6 8 10 8 10z"/></svg>
@@ -179,22 +185,22 @@
           </p>
         </article>
       
-        <article class="glow-effect p-8 rounded-3xl border border-blue-500/10 bg-blue-500/[0.01] backdrop-blur-sm">
+        <article class="glow-effect p-8 rounded-3xl border border-purple-500/10 hover:border-purple-500/20 bg-slate-900/10 backdrop-blur-sm">
           <div class="flex items-center gap-3 mb-4">
             <div class="p-3 bg-white/5 rounded-2xl">
-              <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="text-cyan-500 w-6 h-6"><rect x="4" y="2" width="16" height="20" rx="2" ry="2"/><line x1="9" y1="22" x2="9" y2="16"/><line x1="8" y1="12" x2="16" y2="12"/><line x1="12" y1="16" x2="16" y2="16"/><line x1="8" y1="16" x2="8" y2="16"/><line x1="12" y1="18" x2="12" y2="18"/><line x1="8" y1="18" x2="8" y2="18"/><line x1="12" y1="20" x2="12" y2="20"/><line x1="8" y1="20" x2="8" y2="20"/></svg>
+              <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="text-purple-500 w-6 h-6"><rect x="4" y="2" width="16" height="20" rx="2" ry="2"/><line x1="9" y1="22" x2="9" y2="16"/><line x1="8" y1="12" x2="16" y2="12"/><line x1="12" y1="16" x2="16" y2="16"/><line x1="8" y1="16" x2="8" y2="16"/><line x1="12" y1="18" x2="12" y2="18"/><line x1="8" y1="18" x2="8" y2="18"/><line x1="12" y1="20" x2="12" y2="20"/><line x1="8" y1="20" x2="8" y2="20"/></svg>
             </div>
             <h3 class="text-xl md:text-2xl font-outfit font-bold text-white">Dezimalstunden vs. Echtzeit: Richtig umrechnen</h3>
           </div>
           <p class="text-slate-400 text-sm md:text-base leading-relaxed pl-2">
-            Eine häufige Herausforderung bei der Arbeitszeitberechnung ist die Umrechnung von Minuten in Dezimalstunden. 45 Minuten entsprechen beispielsweise 0,75 Stunden, nicht 0,45 Stunden. Diese Umrechnung ist entscheidend für die korrekte Berechnung von Stundenlöhnen und Überstundenzuschlägen. Unser Zeitrechner Arbeit führt diese Konvertierung automatisch durch. Sie müssen nur Ihre Start- und Endzeit eingeben, und das System berechnet die exakten Dezimalstunden. Genauso wie ein 20 VAT calculator oder 7.5 VAT calculator präzise Steuerwerte liefert, bietet unser Arbeitszeitrechner fehlerfreie Umrechnungen.
+            Eine häufige Herausforderung bei der Arbeitszeitberechnung ist die Umrechnung von Minuten in Dezimalstunden. 45 Minuten entsprechen beispielsweise 0,75 Stunden, nicht 0,45 Stunden. Diese Umrechnung ist entscheidend für die korrekte Berechnung von Stundenlöhnen und Überstundenzuschlägen. Unser Zeitrechner Arbeit führt diese Konvertierung automatisch durch. Sie müssen nur Ihre Start- und Endzeit eingeben, und das System berechnet die exakten Dezimalstunden. Genauso wie ein 20 VAT calculator oder 7.5 VAT calculator präzise Steuerwerte liefert, bietet unser Arbeitszeitrechner fehlerfreie Umrechnungen.<br><br><span class="text-xs text-slate-500 font-semibold block border-t border-white/5 pt-3 mt-3">👉 <strong>Verwandter Partnerlink:</strong> Nutzen Sie für ergänzende Fragestellungen auch das <a href="https://vat-calculator-uk.pages.dev" target="_blank" rel="noopener" class="text-purple-400 hover:text-purple-300 font-bold underline">Cloudflare Portal</a>.</span>
           </p>
         </article>
       
-        <article class="glow-effect p-8 rounded-3xl border border-purple-500/10 bg-purple-500/[0.01] backdrop-blur-sm">
+        <article class="glow-effect p-8 rounded-3xl border border-white/5 bg-slate-900/5 backdrop-blur-sm">
           <div class="flex items-center gap-3 mb-4">
             <div class="p-3 bg-white/5 rounded-2xl">
-              <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="text-emerald-500 w-6 h-6"><rect x="3" y="4" width="18" height="18" rx="2" ry="2"/><line x1="16" y1="2" x2="16" y2="6"/><line x1="8" y1="2" x2="8" y2="6"/><line x1="3" y1="10" x2="21" y2="10"/></svg>
+              <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="text-purple-500 w-6 h-6"><rect x="3" y="4" width="18" height="18" rx="2" ry="2"/><line x1="16" y1="2" x2="16" y2="6"/><line x1="8" y1="2" x2="8" y2="6"/><line x1="3" y1="10" x2="21" y2="10"/></svg>
             </div>
             <h3 class="text-xl md:text-2xl font-outfit font-bold text-white">Monatliche Arbeitsstunden berechnen: Die 40-Stunden-Woche</h3>
           </div>
@@ -210,7 +216,7 @@
             <p class="text-slate-300 font-semibold mb-4">
                 Tipp: Berechnen Sie Sollstunden, Netto-Arbeitszeiten und Gleitzeiten bequem online:
             </p>
-            <a href="https://calculate-vat.com/" target="_blank" rel="noopener" class="text-blue-400 font-bold hover:text-blue-300 underline underline-offset-4 text-lg">
+            <a href="https://calculate-vat.com/" target="_blank" rel="noopener" class="text-purple-400 hover:text-purple-300 font-bold underline underline-offset-4 text-lg">
                 Hier geht es direkt zum kostenlosen Stundenrechner &rarr;
             </a>
         </div>
@@ -223,51 +229,51 @@
             <div class="space-y-4">
                 
         <details class="group p-6 rounded-2xl border border-white/5 bg-slate-900/20 cursor-pointer hover:bg-slate-900/40 transition-all duration-300">
-          <summary class="font-outfit font-bold flex justify-between items-center text-blue-400 uppercase text-xs tracking-wider">
+          <summary class="font-outfit font-bold flex justify-between items-center text-purple-400 hover:text-purple-300 uppercase text-xs tracking-wider">
             Wie berechne ich meine täglichen Arbeitsstunden korrekt?
             <svg xmlns="http://www.w3.org/2000/svg" width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round" class="text-slate-500 group-open:rotate-45 transition-transform"><line x1="12" y1="5" x2="12" y2="19"/><line x1="5" y1="12" x2="19" y2="12"/></svg>
           </summary>
-          <p class="mt-4 text-slate-400 text-sm leading-relaxed pl-2 border-l border-blue-500/30">
+          <p class="mt-4 text-slate-400 text-sm leading-relaxed pl-2 border-l border-white/10">
             Notieren Sie Ihre Start- und Endzeit und ziehen Sie die Pausenzeiten ab. Unser Zeitrechner Arbeit automatisiert diesen Prozess: Geben Sie einfach die Zeiten ein, und das System berechnet Ihre exakten Arbeitsstunden inklusive aller gesetzlichen Pausen.
           </p>
         </details>
       
         <details class="group p-6 rounded-2xl border border-white/5 bg-slate-900/20 cursor-pointer hover:bg-slate-900/40 transition-all duration-300">
-          <summary class="font-outfit font-bold flex justify-between items-center text-blue-400 uppercase text-xs tracking-wider">
+          <summary class="font-outfit font-bold flex justify-between items-center text-purple-400 hover:text-purple-300 uppercase text-xs tracking-wider">
             Was ist der Unterschied zwischen Dezimalstunden und echten Stunden?
             <svg xmlns="http://www.w3.org/2000/svg" width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round" class="text-slate-500 group-open:rotate-45 transition-transform"><line x1="12" y1="5" x2="12" y2="19"/><line x1="5" y1="12" x2="19" y2="12"/></svg>
           </summary>
-          <p class="mt-4 text-slate-400 text-sm leading-relaxed pl-2 border-l border-blue-500/30">
+          <p class="mt-4 text-slate-400 text-sm leading-relaxed pl-2 border-l border-white/10">
             Dezimalstunden sind die mathematische Darstellung von Stunden und Minuten im Dezimalsystem. 1 Stunde 30 Minuten = 1,5 Dezimalstunden. Unser Arbeitszeitrechner konvertiert automatisch, damit Ihre Gehaltsabrechnung präzise ist.
           </p>
         </details>
       
         <details class="group p-6 rounded-2xl border border-white/5 bg-slate-900/20 cursor-pointer hover:bg-slate-900/40 transition-all duration-300">
-          <summary class="font-outfit font-bold flex justify-between items-center text-blue-400 uppercase text-xs tracking-wider">
+          <summary class="font-outfit font-bold flex justify-between items-center text-purple-400 hover:text-purple-300 uppercase text-xs tracking-wider">
             Welche Pausen muss ich bei 8 Stunden Arbeit machen?
             <svg xmlns="http://www.w3.org/2000/svg" width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round" class="text-slate-500 group-open:rotate-45 transition-transform"><line x1="12" y1="5" x2="12" y2="19"/><line x1="5" y1="12" x2="19" y2="12"/></svg>
           </summary>
-          <p class="mt-4 text-slate-400 text-sm leading-relaxed pl-2 border-l border-blue-500/30">
+          <p class="mt-4 text-slate-400 text-sm leading-relaxed pl-2 border-l border-white/10">
             Bei 8 Stunden Arbeit sind mindestens 30 Minuten Pause erforderlich (nach 6 Stunden). Unser Zeitrechner Arbeit berücksichtigt diese Regelungen automatisch und zieht die Pausen korrekt ab.
           </p>
         </details>
       
         <details class="group p-6 rounded-2xl border border-white/5 bg-slate-900/20 cursor-pointer hover:bg-slate-900/40 transition-all duration-300">
-          <summary class="font-outfit font-bold flex justify-between items-center text-blue-400 uppercase text-xs tracking-wider">
+          <summary class="font-outfit font-bold flex justify-between items-center text-purple-400 hover:text-purple-300 uppercase text-xs tracking-wider">
             Kann ich auch Überstunden mit dem Arbeitszeitrechner berechnen?
             <svg xmlns="http://www.w3.org/2000/svg" width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round" class="text-slate-500 group-open:rotate-45 transition-transform"><line x1="12" y1="5" x2="12" y2="19"/><line x1="5" y1="12" x2="19" y2="12"/></svg>
           </summary>
-          <p class="mt-4 text-slate-400 text-sm leading-relaxed pl-2 border-l border-blue-500/30">
+          <p class="mt-4 text-slate-400 text-sm leading-relaxed pl-2 border-l border-white/10">
             Ja, absolut. Wenn Sie mehr als Ihre vereinbarte wöchentliche Arbeitszeit leisten, zeigt der Zeitrechner Arbeit die Überstunden automatisch an. So haben Sie jederzeit einen Überblick über Ihre Gesamtarbeitszeit.
           </p>
         </details>
       
         <details class="group p-6 rounded-2xl border border-white/5 bg-slate-900/20 cursor-pointer hover:bg-slate-900/40 transition-all duration-300">
-          <summary class="font-outfit font-bold flex justify-between items-center text-blue-400 uppercase text-xs tracking-wider">
+          <summary class="font-outfit font-bold flex justify-between items-center text-purple-400 hover:text-purple-300 uppercase text-xs tracking-wider">
             Gibt es auch einen Rechner für Umsatzsteuern?
             <svg xmlns="http://www.w3.org/2000/svg" width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round" class="text-slate-500 group-open:rotate-45 transition-transform"><line x1="12" y1="5" x2="12" y2="19"/><line x1="5" y1="12" x2="19" y2="12"/></svg>
           </summary>
-          <p class="mt-4 text-slate-400 text-sm leading-relaxed pl-2 border-l border-blue-500/30">
+          <p class="mt-4 text-slate-400 text-sm leading-relaxed pl-2 border-l border-white/10">
             Ja, für Umsatzsteuerberechnungen empfehlen wir https://calculate-vat.com/, wo Sie einen VAT calculator usa, VAT calculator UK und weitere spezialisierte Steuerwerkzeuge finden. Dort können Sie auch einen Percentage VAT calculator oder Fuel VAT calculator nutzen.
           </p>
         </details>
@@ -282,7 +288,7 @@
         <div class="max-w-6xl mx-auto px-6">
             <div class="grid md:grid-cols-2 gap-8 items-center border-b border-white/5 pb-8 mb-8">
                 <div>
-                    <span class="font-outfit font-extrabold uppercase tracking-widest text-xs text-blue-500">Links Curator Netzwerk Partner</span>
+                    <span class="font-outfit font-extrabold uppercase tracking-widest text-xs text-purple-500">Links Curator Netzwerk Partner</span>
                     <p class="text-slate-400 text-xs mt-2 max-w-sm leading-relaxed">
                         Dieses Informationsportal ist Teil unseres dezentralen Netzwerks zur Arbeitszeitoptimierung. Alle Rechte vorbehalten.
                     </p>
@@ -292,20 +298,20 @@
                     <ul class="flex flex-wrap gap-x-4 gap-y-2 text-xs">
                         
           <li>
-            <a href="https://vat-calculator-uk.pages.dev" target="_blank" rel="noopener" class="text-slate-400 hover:text-blue-400 transition-colors underline decoration-slate-600 hover:decoration-blue-400">
-              Cloudflare Portal (Arbeitszeitrechner - Arbeitszeit einfach berechnen)
+            <a href="https://vat-calculator-uk.pages.dev" target="_blank" rel="noopener" class="text-slate-400 hover:text-purple-400 hover:text-purple-300 transition-colors underline decoration-slate-600 hover:decoration-current">
+              Cloudflare Portal (Arbeitszeitrechner)
             </a>
           </li>
         
           <li>
-            <a href="https://vat-calculator-uk.vercel.app" target="_blank" rel="noopener" class="text-slate-400 hover:text-blue-400 transition-colors underline decoration-slate-600 hover:decoration-blue-400">
-              Vercel Portal (Arbeitsstunden berechnen - Einfacher Online Rechner)
+            <a href="https://vat-calculator-uk.vercel.app" target="_blank" rel="noopener" class="text-slate-400 hover:text-purple-400 hover:text-purple-300 transition-colors underline decoration-slate-600 hover:decoration-current">
+              Vercel Portal (Arbeitsstunden berechnen)
             </a>
           </li>
         
           <li>
-            <a href="https://vat-calculator-uk.netlify.app" target="_blank" rel="noopener" class="text-slate-400 hover:text-blue-400 transition-colors underline decoration-slate-600 hover:decoration-blue-400">
-              Netlify Portal (Dezimal Stundenrechner - Arbeitszeit einfach berechnen)
+            <a href="https://vat-calculator-uk.netlify.app" target="_blank" rel="noopener" class="text-slate-400 hover:text-purple-400 hover:text-purple-300 transition-colors underline decoration-slate-600 hover:decoration-current">
+              Netlify Portal (Dezimal Stundenrechner)
             </a>
           </li>
         
@@ -313,7 +319,7 @@
                 </div>
             </div>
             <div class="text-center text-slate-500 text-xs">
-                &copy; 2026 partner.uhrzeit-tools.de • Alle Tools zur Arbeitszeiterfassung &amp; Stundenberechnung.
+                &copy; 2026 <a href="https://calculate-vat.com/" target="_blank" rel="noopener" class="underline hover:text-slate-300 transition-colors">Dezimalzeit.de</a> Partner • Alle Tools zur Arbeitszeiterfassung &amp; Stundenberechnung.
             </div>
         </div>
     </footer>
