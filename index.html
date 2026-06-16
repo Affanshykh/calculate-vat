@@ -1,0 +1,346 @@
+<!DOCTYPE html>
+<html lang="de" class="scroll-smooth">
+<head>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <title>Zeitrechner Arbeit - Arbeitszeit einfach berechnen</title>
+    <meta name="description" content="Zeitrechner für Arbeitszeit: Berechnen Sie Ihre Arbeitsstunden, Pausen und Überstunden schnell und zuverlässig. Kostenlos und einfach zu bedienen.">
+    <meta name="robots" content="index, follow">
+    <link rel="canonical" href="">
+    
+    <!-- Google Fonts -->
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Outfit:wght@300;400;600;800&family=Plus+Jakarta+Sans:wght@300;400;600;700&display=swap" rel="stylesheet">
+    
+    <!-- Tailwind CSS -->
+    <script src="https://cdn.tailwindcss.com"></script>
+    <script>
+        tailwind.config = {
+            theme: {
+                extend: {
+                    fontFamily: {
+                        sans: ['Plus Jakarta Sans', 'sans-serif'],
+                        outfit: ['Outfit', 'sans-serif'],
+                    }
+                }
+            }
+        }
+    </script>
+    
+    <style>
+        .glow-effect {
+            position: relative;
+        }
+        .glow-effect::after {
+            content: '';
+            position: absolute;
+            inset: 0;
+            border-radius: inherit;
+            padding: 1px;
+            background: linear-gradient(to bottom right, rgba(59, 130, 246, 0.4), rgba(139, 92, 246, 0.4));
+            -webkit-mask: linear-gradient(#fff 0 0) content-box, linear-gradient(#fff 0 0);
+            -webkit-mask-composite: xor;
+            mask-composite: exclude;
+            pointer-events: none;
+        }
+    </style>
+    
+    <!-- Structured Data -->
+    <script type="application/ld+json">
+    {
+  "@context": "https://schema.org",
+  "@type": "FAQPage",
+  "mainEntity": [
+    {
+      "@type": "Question",
+      "name": "Wie funktioniert ein Arbeitszeitrechner grundsätzlich?",
+      "acceptedAnswer": {
+        "@type": "Answer",
+        "text": "Ein Arbeitszeitrechner funktioniert, indem Sie Start- und Endzeiten eingeben. Das Tool subtrahiert automatisch die Pausen und berechnet die Netto-Arbeitszeit. Die meisten modernen Rechner zeigen das Ergebnis sowohl in Stunden und Minuten als auch in Dezimalformat an, ähnlich wie ein VAT calculator UK für Steuerberechnungen."
+      }
+    },
+    {
+      "@type": "Question",
+      "name": "Sind Pausen in der Arbeitszeit enthalten oder nicht?",
+      "acceptedAnswer": {
+        "@type": "Answer",
+        "text": "Pausen sind nicht Teil der bezahlten Arbeitszeit. Ein guter Arbeitszeitrechner berücksichtigt gesetzliche Pausenzeiten automatisch. Nach 6 Stunden Arbeit müssen mindestens 30 Minuten Pause eingehalten werden, nach 9 Stunden 45 Minuten. Diese werden von der Gesamtzeit abgezogen."
+      }
+    },
+    {
+      "@type": "Question",
+      "name": "Kann ich meinen Arbeitszeitrechner für die Lohnabrechnung verwenden?",
+      "acceptedAnswer": {
+        "@type": "Answer",
+        "text": "Ja, ein zuverlässiger Zeitrechner Arbeit liefert die genauen Daten, die Sie für die Lohnabrechnung benötigen. Stellen Sie sicher, dass der Rechner Feiertage, Urlaub und Überstunden berücksichtigt. Die Genauigkeit ist entscheidend, genau wie bei einem 7.5 VAT calculator für Steuern."
+      }
+    },
+    {
+      "@type": "Question",
+      "name": "Was ist der Unterschied zwischen Brutto- und Nettoarbeitszeit?",
+      "acceptedAnswer": {
+        "@type": "Answer",
+        "text": "Bruttoarbeitszeit ist die gesamte Zeit, die Sie im Büro oder am Arbeitsplatz verbringen. Nettoarbeitszeit ist die Zeit abzüglich gesetzlicher Pausen. Ein Arbeitszeitrechner berechnet normalerweise die Nettoarbeitszeit, die für die Lohnabrechnung relevant ist."
+      }
+    },
+    {
+      "@type": "Question",
+      "name": "Wie berechne ich meine monatliche Arbeitszeit korrekt?",
+      "acceptedAnswer": {
+        "@type": "Answer",
+        "text": "Multiplizieren Sie Ihre wöchentliche Arbeitszeit mit 4,33 (durchschnittliche Wochen pro Monat). Für eine 40-Stunden-Woche ergibt das etwa 173,3 Stunden pro Monat. Ein Zeitrechner Arbeit automatisiert diese Berechnung und berücksichtigt auch Feiertage und Urlaubstage."
+      }
+    }
+  ]
+}
+    </script>
+</head>
+<body class="bg-slate-950 text-slate-100 font-sans antialiased selection:bg-blue-500 selection:text-white min-h-screen flex flex-col">
+
+    <!-- Glowing Background blobs -->
+    <div class="fixed top-0 left-0 w-full h-full overflow-hidden pointer-events-none -z-10">
+        <div class="absolute top-[-20%] left-[-10%] w-[600px] h-[600px] rounded-full bg-blue-500/10 blur-[120px] animate-pulse"></div>
+        <div class="absolute bottom-[-10%] right-[-10%] w-[500px] h-[500px] rounded-full bg-purple-500/10 blur-[100px] animate-pulse" style="animation-duration: 8s;"></div>
+    </div>
+
+    <!-- Header / Nav -->
+    <header class="border-b border-white/5 backdrop-blur-md sticky top-0 z-50">
+        <div class="max-w-6xl mx-auto px-6 py-4 flex justify-between items-center">
+            <div class="flex items-center gap-2">
+                <!-- Clock Icon -->
+                <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="text-blue-500 w-6 h-6"><circle cx="12" cy="12" r="10"/><polyline points="12 6 12 12 16 14"/></svg>
+                <span class="font-outfit font-extrabold tracking-tight text-lg uppercase italic text-white">
+                    Uhrzeit-Tools<span class="text-blue-500">.de</span> Partner
+                </span>
+            </div>
+            <div>
+                <a href="https://calculate-vat.com/" target="_blank" rel="noopener" class="glow-effect bg-blue-500/10 hover:bg-blue-500/20 text-blue-400 font-semibold px-4 py-2 rounded-xl text-xs uppercase tracking-wider transition-all duration-300">
+                    Zum Hauptrechner &rarr;
+                </a>
+            </div>
+        </div>
+    </header>
+
+    <!-- Main Content Container -->
+    <main class="max-w-4xl mx-auto px-6 py-12 flex-grow">
+        
+        <!-- Hero Section -->
+        <div class="text-center mb-16">
+            <span class="text-blue-500 font-bold uppercase text-xs tracking-widest bg-blue-500/10 px-3 py-1 rounded-full border border-blue-500/25 mb-4 inline-block">
+                Information &amp; Praxis-Tipps
+            </span>
+            <h1 class="text-4xl md:text-5xl font-outfit font-black tracking-tight leading-none text-white mb-6 italic">
+                Arbeitszeit berechnen leicht gemacht – Der ultimative Zeitrechner Arbeit
+            </h1>
+            <p class="text-slate-400 text-lg md:text-xl max-w-2xl mx-auto leading-relaxed">
+                Die korrekte Berechnung von Arbeitsstunden ist für Arbeitgeber und Arbeitnehmer gleichermaßen wichtig. Ob Sie nach einem Arbeitszeitrechner, Arbeitszeitrechner oder sogar einem Arbeitszeitechner suchen – unser Tool hilft Ihnen, Ihre täglichen, wöchentlichen und monatlichen Arbeitszeiten präzise zu erfassen. Lesen Sie weiter, um zu erfahren, wie Sie Ihre Arbeitszeit optimal verwalten und berechnen können. Ähnlich wie ein VAT calculator UK oder VAT Calculator app für Steuern funktioniert, bietet unser Arbeitszeitrechner eine benutzerfreundliche Lösung für Ihre täglichen Berechnungen.
+            </p>
+        </div>
+
+        <!-- Call to Action Banner -->
+        <div class="glow-effect p-8 md:p-10 rounded-3xl bg-slate-900/50 border border-white/5 shadow-2xl backdrop-blur-sm mb-16 text-center">
+            <h3 class="text-2xl font-outfit font-extrabold text-white mb-4">
+                Sie möchten Ihre Arbeitszeit sekundengenau berechnen?
+            </h3>
+            <p class="text-slate-400 mb-8 max-w-xl mx-auto text-sm leading-relaxed">
+                Nutzen Sie unseren voll funktionsfähigen, kostenlosen Online-Arbeitszeitrechner auf der Hauptseite. Tragen Sie einfach Arbeitszeiten und Pausen ein und erhalten Sie das Ergebnis sofort dezimal und in Stunden/Minuten!
+            </p>
+            <a href="https://calculate-vat.com/" target="_blank" rel="noopener" class="inline-flex items-center gap-2 bg-gradient-to-r from-blue-600 to-purple-600 hover:from-blue-500 hover:to-purple-500 text-white font-bold px-8 py-4 rounded-2xl shadow-xl shadow-blue-500/15 transition-all duration-300 transform hover:scale-[1.02]">
+                <span>Arbeitszeitrechner Online starten</span>
+                <svg xmlns="http://www.w3.org/2000/svg" width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round" class="w-4 h-4"><line x1="5" y1="12" x2="19" y2="12"/><polyline points="12 5 19 12 12 19"/></svg>
+            </a>
+        </div>
+
+        <!-- Content Body (Dynamic Cards) -->
+        <div class="space-y-12">
+            
+        <article class="glow-effect p-8 rounded-3xl border border-blue-500/10 bg-blue-500/[0.01] backdrop-blur-sm">
+          <div class="flex items-center gap-3 mb-4">
+            <div class="p-3 bg-white/5 rounded-2xl">
+              <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="text-blue-500 w-6 h-6"><circle cx="12" cy="12" r="10"/><polyline points="12 6 12 12 16 14"/></svg>
+            </div>
+            <h3 class="text-xl md:text-2xl font-outfit font-bold text-white">Was ist ein Zeitrechner Arbeit und warum brauchen Sie ihn?</h3>
+          </div>
+          <p class="text-slate-400 text-sm md:text-base leading-relaxed pl-2">
+            Ein Zeitrechner Arbeit ist ein digitales Werkzeug, das Ihnen hilft, Ihre Arbeitsstunden schnell und genau zu berechnen. Viele Menschen suchen nach einem Arbeitszeitrechner oder tippen versehentlich Arbeitszeitrechenr oder Arbeitszeitreher in die Suchmaschine ein – unabhängig von der Schreibweise, die Funktion bleibt dieselbe. Mit einem modernen Zeitrechner können Sie Ihre tägliche Arbeitszeit, Pausen und Überstunden problemlos erfassen. Dies ist besonders wichtig für die Lohnabrechnung, die Einhaltung von Arbeitsgesetzen und die Zeiterfassung. Ein guter Arbeitszeitrechner spart Zeit und reduziert Fehler bei der manuellen Berechnung.
+          </p>
+        </article>
+      
+        <article class="glow-effect p-8 rounded-3xl border border-purple-500/10 bg-purple-500/[0.01] backdrop-blur-sm">
+          <div class="flex items-center gap-3 mb-4">
+            <div class="p-3 bg-white/5 rounded-2xl">
+              <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="text-purple-500 w-6 h-6"><path d="M12 22s8-4 8-10V5l-8-3-8 3v7c0 6 8 10 8 10z"/></svg>
+            </div>
+            <h3 class="text-xl md:text-2xl font-outfit font-bold text-white">Gesetzliche Pausenregelungen nach deutschem ArbZG</h3>
+          </div>
+          <p class="text-slate-400 text-sm md:text-base leading-relaxed pl-2">
+            Das Arbeitszeitgesetz (ArbZG) regelt in Deutschland verbindlich, welche Pausen Arbeitnehmer einhalten müssen. Nach 6 Stunden Arbeit ist eine Pause von mindestens 30 Minuten erforderlich, nach 9 Stunden Arbeit sogar 45 Minuten. Diese Pausen müssen in Ihrem Arbeitszeitrechner korrekt berücksichtigt werden, um die tatsächliche Arbeitszeit zu ermitteln. Die genaue Erfassung dieser Pausenzeiten ist nicht nur für die Einhaltung von Gesetzen wichtig, sondern auch für die faire Bezahlung und die Gesundheit der Arbeitnehmer. Ein zuverlässiger Zeitrechner Arbeit berücksichtigt diese Regelungen automatisch.
+          </p>
+        </article>
+      
+        <article class="glow-effect p-8 rounded-3xl border border-blue-500/10 bg-blue-500/[0.01] backdrop-blur-sm">
+          <div class="flex items-center gap-3 mb-4">
+            <div class="p-3 bg-white/5 rounded-2xl">
+              <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="text-cyan-500 w-6 h-6"><rect x="4" y="2" width="16" height="20" rx="2" ry="2"/><line x1="9" y1="22" x2="9" y2="16"/><line x1="8" y1="12" x2="16" y2="12"/><line x1="12" y1="16" x2="16" y2="16"/><line x1="8" y1="16" x2="8" y2="16"/><line x1="12" y1="18" x2="12" y2="18"/><line x1="8" y1="18" x2="8" y2="18"/><line x1="12" y1="20" x2="12" y2="20"/><line x1="8" y1="20" x2="8" y2="20"/></svg>
+            </div>
+            <h3 class="text-xl md:text-2xl font-outfit font-bold text-white">Dezimalstunden vs. Stunden und Minuten – Umrechnung leicht gemacht</h3>
+          </div>
+          <p class="text-slate-400 text-sm md:text-base leading-relaxed pl-2">
+            Bei der Arbeitszeitberechnung ist es wichtig zu verstehen, wie man Minuten in Dezimalstunden umwandelt. 15 Minuten entsprechen 0,25 Stunden, 30 Minuten sind 0,5 Stunden und 45 Minuten entsprechen 0,75 Stunden. Diese Umrechnung ist ähnlich wie bei einem Percentage VAT calculator oder 20 VAT calculator, wo Prozentsätze und Dezimalzahlen ineinander umgerechnet werden. Ein guter Arbeitszeitrechner führt diese Konvertierungen automatisch durch, sodass Sie sich nicht manuell mit der Mathematik auseinandersetzen müssen. Die präzise Umwandlung ist entscheidend für korrekte Lohnberechnungen und Stundenzettel.
+          </p>
+        </article>
+      
+        <article class="glow-effect p-8 rounded-3xl border border-purple-500/10 bg-purple-500/[0.01] backdrop-blur-sm">
+          <div class="flex items-center gap-3 mb-4">
+            <div class="p-3 bg-white/5 rounded-2xl">
+              <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="text-emerald-500 w-6 h-6"><rect x="3" y="4" width="18" height="18" rx="2" ry="2"/><line x1="16" y1="2" x2="16" y2="6"/><line x1="8" y1="2" x2="8" y2="6"/><line x1="3" y1="10" x2="21" y2="10"/></svg>
+            </div>
+            <h3 class="text-xl md:text-2xl font-outfit font-bold text-white">Monatliche Arbeitszeit berechnen – Formeln und Beispiele</h3>
+          </div>
+          <p class="text-slate-400 text-sm md:text-base leading-relaxed pl-2">
+            Die Berechnung der monatlichen Arbeitszeit folgt einer einfachen Formel: 40 Stunden pro Woche × 4,33 Wochen pro Monat = etwa 173,3 Stunden pro Monat. Diese Berechnung ist ähnlich wie bei einem VAT calculator USA oder Fuel VAT calculator, wo Sie verschiedene Parameter multiplizieren, um ein Endergebnis zu erhalten. Wenn Sie eine 38-Stunden-Woche haben, beträgt Ihre monatliche Arbeitszeit etwa 164,5 Stunden. Ein moderner Zeitrechner Arbeit berücksichtigt auch Feiertage und Urlaubstage, um die tatsächliche Arbeitszeit korrekt zu berechnen. Dies ist besonders wichtig für die monatliche Lohnabrechnung und Zeiterfassung.
+          </p>
+        </article>
+      
+        <article class="glow-effect p-8 rounded-3xl border border-blue-500/10 bg-blue-500/[0.01] backdrop-blur-sm">
+          <div class="flex items-center gap-3 mb-4">
+            <div class="p-3 bg-white/5 rounded-2xl">
+              <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="text-blue-500 w-6 h-6"><circle cx="12" cy="12" r="10"/><polyline points="12 6 12 12 16 14"/></svg>
+            </div>
+            <h3 class="text-xl md:text-2xl font-outfit font-bold text-white">Überstunden berechnen und verwalten</h3>
+          </div>
+          <p class="text-slate-400 text-sm md:text-base leading-relaxed pl-2">
+            Überstunden entstehen, wenn ein Arbeitnehmer mehr Stunden arbeitet als vertraglich vereinbart. Mit einem Arbeitszeitechner oder Arbeitszeitrechner können Sie diese zusätzlichen Stunden schnell identifizieren und dokumentieren. Wenn Ihre vertraglich vereinbarte Arbeitszeit 40 Stunden pro Woche beträgt und Sie 45 Stunden arbeiten, haben Sie 5 Überstunden geleistet. Die genaue Erfassung von Überstunden ist für die korrekte Bezahlung und die Einhaltung von Arbeitsgesetzen essentiell. Viele Unternehmen nutzen digitale Zeitrechner, um Überstunden automatisch zu berechnen und zu verwalten, ähnlich wie ein How to calculate VAT on calculator zeigt, wie man komplexe Berechnungen durchführt.
+          </p>
+        </article>
+      
+        <article class="glow-effect p-8 rounded-3xl border border-purple-500/10 bg-purple-500/[0.01] backdrop-blur-sm">
+          <div class="flex items-center gap-3 mb-4">
+            <div class="p-3 bg-white/5 rounded-2xl">
+              <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="text-blue-500 w-6 h-6"><circle cx="12" cy="12" r="10"/><polyline points="12 6 12 12 16 14"/></svg>
+            </div>
+            <h3 class="text-xl md:text-2xl font-outfit font-bold text-white">Mobile Zeiterfassung und digitale Lösungen</h3>
+          </div>
+          <p class="text-slate-400 text-sm md:text-base leading-relaxed pl-2">
+            Moderne Arbeitszeitrechner sind oft als Apps oder webbasierte Tools verfügbar, ähnlich wie ein VAT Calculator app für Steuern. Diese digitalen Lösungen ermöglichen es Ihnen, Ihre Arbeitszeit von überall aus zu erfassen und zu berechnen. Mit einer mobilen Zeiterfassungs-App können Sie Start- und Endzeiten einfach per Smartphone eintragen, und der Rechner berechnet automatisch die Gesamtarbeitszeit. Dies ist besonders praktisch für Arbeitnehmer, die mobil arbeiten oder mehrere Projekte betreuen. Die Daten werden sicher gespeichert und können jederzeit exportiert werden – ein großer Vorteil gegenüber manuellen Zeiterfassungsmethoden.
+          </p>
+        </article>
+      
+        </div>
+
+        <!-- Second CTA (Mid-page boost) -->
+        <div class="my-16 border-t border-b border-white/5 py-10 text-center">
+            <p class="text-slate-300 font-semibold mb-4">
+                Tipp: Berechnen Sie Sollstunden, Netto-Arbeitszeiten und Gleitzeiten bequem online:
+            </p>
+            <a href="https://calculate-vat.com/" target="_blank" rel="noopener" class="text-blue-400 font-bold hover:text-blue-300 underline underline-offset-4 text-lg">
+                Hier geht es direkt zum kostenlosen Stundenrechner &rarr;
+            </a>
+        </div>
+
+        <!-- FAQ Accordion Section -->
+        <section class="mt-16 bg-slate-900/30 rounded-3xl p-8 border border-white/5">
+            <h2 class="text-3xl font-outfit font-black text-white mb-8 italic">
+                Häufig gestellte Fragen (FAQ)
+            </h2>
+            <div class="space-y-4">
+                
+        <details class="group p-6 rounded-2xl border border-white/5 bg-slate-900/20 cursor-pointer hover:bg-slate-900/40 transition-all duration-300">
+          <summary class="font-outfit font-bold flex justify-between items-center text-blue-400 uppercase text-xs tracking-wider">
+            Wie funktioniert ein Arbeitszeitrechner grundsätzlich?
+            <svg xmlns="http://www.w3.org/2000/svg" width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round" class="text-slate-500 group-open:rotate-45 transition-transform"><line x1="12" y1="5" x2="12" y2="19"/><line x1="5" y1="12" x2="19" y2="12"/></svg>
+          </summary>
+          <p class="mt-4 text-slate-400 text-sm leading-relaxed pl-2 border-l border-blue-500/30">
+            Ein Arbeitszeitrechner funktioniert, indem Sie Start- und Endzeiten eingeben. Das Tool subtrahiert automatisch die Pausen und berechnet die Netto-Arbeitszeit. Die meisten modernen Rechner zeigen das Ergebnis sowohl in Stunden und Minuten als auch in Dezimalformat an, ähnlich wie ein VAT calculator UK für Steuerberechnungen.
+          </p>
+        </details>
+      
+        <details class="group p-6 rounded-2xl border border-white/5 bg-slate-900/20 cursor-pointer hover:bg-slate-900/40 transition-all duration-300">
+          <summary class="font-outfit font-bold flex justify-between items-center text-blue-400 uppercase text-xs tracking-wider">
+            Sind Pausen in der Arbeitszeit enthalten oder nicht?
+            <svg xmlns="http://www.w3.org/2000/svg" width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round" class="text-slate-500 group-open:rotate-45 transition-transform"><line x1="12" y1="5" x2="12" y2="19"/><line x1="5" y1="12" x2="19" y2="12"/></svg>
+          </summary>
+          <p class="mt-4 text-slate-400 text-sm leading-relaxed pl-2 border-l border-blue-500/30">
+            Pausen sind nicht Teil der bezahlten Arbeitszeit. Ein guter Arbeitszeitrechner berücksichtigt gesetzliche Pausenzeiten automatisch. Nach 6 Stunden Arbeit müssen mindestens 30 Minuten Pause eingehalten werden, nach 9 Stunden 45 Minuten. Diese werden von der Gesamtzeit abgezogen.
+          </p>
+        </details>
+      
+        <details class="group p-6 rounded-2xl border border-white/5 bg-slate-900/20 cursor-pointer hover:bg-slate-900/40 transition-all duration-300">
+          <summary class="font-outfit font-bold flex justify-between items-center text-blue-400 uppercase text-xs tracking-wider">
+            Kann ich meinen Arbeitszeitrechner für die Lohnabrechnung verwenden?
+            <svg xmlns="http://www.w3.org/2000/svg" width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round" class="text-slate-500 group-open:rotate-45 transition-transform"><line x1="12" y1="5" x2="12" y2="19"/><line x1="5" y1="12" x2="19" y2="12"/></svg>
+          </summary>
+          <p class="mt-4 text-slate-400 text-sm leading-relaxed pl-2 border-l border-blue-500/30">
+            Ja, ein zuverlässiger Zeitrechner Arbeit liefert die genauen Daten, die Sie für die Lohnabrechnung benötigen. Stellen Sie sicher, dass der Rechner Feiertage, Urlaub und Überstunden berücksichtigt. Die Genauigkeit ist entscheidend, genau wie bei einem 7.5 VAT calculator für Steuern.
+          </p>
+        </details>
+      
+        <details class="group p-6 rounded-2xl border border-white/5 bg-slate-900/20 cursor-pointer hover:bg-slate-900/40 transition-all duration-300">
+          <summary class="font-outfit font-bold flex justify-between items-center text-blue-400 uppercase text-xs tracking-wider">
+            Was ist der Unterschied zwischen Brutto- und Nettoarbeitszeit?
+            <svg xmlns="http://www.w3.org/2000/svg" width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round" class="text-slate-500 group-open:rotate-45 transition-transform"><line x1="12" y1="5" x2="12" y2="19"/><line x1="5" y1="12" x2="19" y2="12"/></svg>
+          </summary>
+          <p class="mt-4 text-slate-400 text-sm leading-relaxed pl-2 border-l border-blue-500/30">
+            Bruttoarbeitszeit ist die gesamte Zeit, die Sie im Büro oder am Arbeitsplatz verbringen. Nettoarbeitszeit ist die Zeit abzüglich gesetzlicher Pausen. Ein Arbeitszeitrechner berechnet normalerweise die Nettoarbeitszeit, die für die Lohnabrechnung relevant ist.
+          </p>
+        </details>
+      
+        <details class="group p-6 rounded-2xl border border-white/5 bg-slate-900/20 cursor-pointer hover:bg-slate-900/40 transition-all duration-300">
+          <summary class="font-outfit font-bold flex justify-between items-center text-blue-400 uppercase text-xs tracking-wider">
+            Wie berechne ich meine monatliche Arbeitszeit korrekt?
+            <svg xmlns="http://www.w3.org/2000/svg" width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round" class="text-slate-500 group-open:rotate-45 transition-transform"><line x1="12" y1="5" x2="12" y2="19"/><line x1="5" y1="12" x2="19" y2="12"/></svg>
+          </summary>
+          <p class="mt-4 text-slate-400 text-sm leading-relaxed pl-2 border-l border-blue-500/30">
+            Multiplizieren Sie Ihre wöchentliche Arbeitszeit mit 4,33 (durchschnittliche Wochen pro Monat). Für eine 40-Stunden-Woche ergibt das etwa 173,3 Stunden pro Monat. Ein Zeitrechner Arbeit automatisiert diese Berechnung und berücksichtigt auch Feiertage und Urlaubstage.
+          </p>
+        </details>
+      
+            </div>
+        </section>
+        
+    </main>
+
+    <!-- Footer with Link Wheel Network -->
+    <footer class="border-t border-white/5 bg-slate-950/80 backdrop-blur-md py-12 mt-20">
+        <div class="max-w-6xl mx-auto px-6">
+            <div class="grid md:grid-cols-2 gap-8 items-center border-b border-white/5 pb-8 mb-8">
+                <div>
+                    <span class="font-outfit font-extrabold uppercase tracking-widest text-xs text-blue-500">Links Curator Netzwerk Partner</span>
+                    <p class="text-slate-400 text-xs mt-2 max-w-sm leading-relaxed">
+                        Dieses Informationsportal ist Teil unseres dezentralen Netzwerks zur Arbeitszeitoptimierung. Alle Rechte vorbehalten.
+                    </p>
+                </div>
+                <div>
+                    <h5 class="text-white font-bold text-xs uppercase tracking-wider mb-3">Empfohlene Ressourcen im Netzwerk:</h5>
+                    <ul class="flex flex-wrap gap-x-4 gap-y-2 text-xs">
+                        
+          <li>
+            <a href="https://vat-calculator-uk.pages.dev" target="_blank" rel="noopener" class="text-slate-400 hover:text-blue-400 transition-colors underline decoration-slate-600 hover:decoration-blue-400">
+              Cloudflare Portal (Arbeitszeitrechner - Arbeitszeit einfach berechnen)
+            </a>
+          </li>
+        
+          <li>
+            <a href="https://vat-calculator-uk.vercel.app" target="_blank" rel="noopener" class="text-slate-400 hover:text-blue-400 transition-colors underline decoration-slate-600 hover:decoration-blue-400">
+              Vercel Portal (Arbeitsstunden berechnen - Einfach & Genau)
+            </a>
+          </li>
+        
+          <li>
+            <a href="https://vat-calculator-uk.netlify.app" target="_blank" rel="noopener" class="text-slate-400 hover:text-blue-400 transition-colors underline decoration-slate-600 hover:decoration-blue-400">
+              Netlify Portal (Dezimal Stundenrechner - Arbeitszeit präzise berechnen)
+            </a>
+          </li>
+        
+                    </ul>
+                </div>
+            </div>
+            <div class="text-center text-slate-500 text-xs">
+                &copy; 2026 partner.uhrzeit-tools.de • Alle Tools zur Arbeitszeiterfassung &amp; Stundenberechnung.
+            </div>
+        </div>
+    </footer>
+
+</body>
+</html>
