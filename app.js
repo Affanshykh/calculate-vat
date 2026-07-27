@@ -4,6 +4,13 @@
  */
 
 document.addEventListener('DOMContentLoaded', () => {
+    // Helper function to send GA4 events safely
+    function trackGaEvent(eventName, params = {}) {
+        if (typeof gtag === 'function') {
+            gtag('event', eventName, params);
+        }
+    }
+
     // ==========================================================================
     // DOM Element References & Page Route Initialization
     // ==========================================================================
@@ -356,6 +363,22 @@ document.addEventListener('DOMContentLoaded', () => {
             calculate();
         }
 
+        let calculateDebounceTimer;
+        function trackCalculateEventDebounced() {
+            clearTimeout(calculateDebounceTimer);
+            calculateDebounceTimer = setTimeout(() => {
+                const amount = parseFloat(amountInput.value) || 0;
+                if (amount <= 0) return;
+                const rate = isElectricityPage ? 9 : (isCustomRate ? (parseFloat(customRateInput.value) || 0) : activeRate);
+                trackGaEvent('calculate_vat', {
+                    country: currentCountry,
+                    mode: currentMode,
+                    rate: rate,
+                    amount: amount
+                });
+            }, 1000);
+        }
+
         function calculate() {
             const amount = parseFloat(amountInput.value) || 0;
             const rate = isElectricityPage ? 9 : (isCustomRate ? (parseFloat(customRateInput.value) || 0) : activeRate);
@@ -381,6 +404,7 @@ document.addEventListener('DOMContentLoaded', () => {
             if (vatAppliedLabel) vatAppliedLabel.textContent = `(${rate}% VAT)`;
             
             updateChart(net, vat, gross);
+            trackCalculateEventDebounced();
         }
 
         function formatCurrency(val, symbol) {
@@ -627,7 +651,7 @@ document.addEventListener('DOMContentLoaded', () => {
             const country = currentCountry;
             const mode = currentMode;
             
-            const url = new URL(window.location.href);
+            const url = new URL(window.location.origin + window.location.pathname);
             url.searchParams.set('amount', amount);
             if (!isElectricityPage) {
                 url.searchParams.set('rate', rate);
@@ -637,11 +661,23 @@ document.addEventListener('DOMContentLoaded', () => {
                 url.searchParams.set('country', country);
             }
             
+            // Append UTM parameters for referral attribution
+            url.searchParams.set('utm_source', 'user_share');
+            url.searchParams.set('utm_medium', 'clipboard');
+            url.searchParams.set('utm_campaign', 'calculator_share');
+            
             navigator.clipboard.writeText(url.toString()).then(() => {
                 if (shareBtn) {
                     shareBtn.classList.add('copied');
                     setTimeout(() => shareBtn.classList.remove('copied'), 2000);
                 }
+                // Trigger GA4 event
+                trackGaEvent('share_link', {
+                    country: country,
+                    mode: mode,
+                    rate: rate,
+                    amount: amount
+                });
             });
         }
 
@@ -670,6 +706,12 @@ document.addEventListener('DOMContentLoaded', () => {
             document.body.appendChild(link);
             link.click();
             document.body.removeChild(link);
+            
+            // Trigger GA4 event
+            trackGaEvent('export_history', {
+                country: currentCountry,
+                history_count: history.length
+            });
         }
 
         // Main event listeners
@@ -827,6 +869,12 @@ document.addEventListener('DOMContentLoaded', () => {
                 } else {
                     renderResult('valid', `<strong>Valid VAT Format!</strong> Structurally correct and conforms to local registry formatting.`, rawInput, country);
                 }
+                
+                // Trigger GA4 Event
+                trackGaEvent('validate_vat_format', {
+                    input_country: country,
+                    is_valid_format: isValidFormat
+                });
             }, 800);
         }
 
@@ -928,6 +976,18 @@ document.addEventListener('DOMContentLoaded', () => {
         const resNetRefund = document.getElementById('refund-res-net-refund');
         const resRateLabel = document.getElementById('refund-res-rate-label');
 
+        let refundDebounceTimer;
+        function trackRefundEventDebounced(spend, rate) {
+            clearTimeout(refundDebounceTimer);
+            refundDebounceTimer = setTimeout(() => {
+                if (spend <= 0) return;
+                trackGaEvent('calculate_refund', {
+                    spend_amount: spend,
+                    vat_rate: rate
+                });
+            }, 1000);
+        }
+
         function calculateRefund() {
             const spend = parseFloat(refundSpendInput.value) || 0;
             const rate = parseFloat(refundRateSelect.value);
@@ -940,6 +1000,8 @@ document.addEventListener('DOMContentLoaded', () => {
             resAdminFee.textContent = `€${adminFee.toLocaleString(undefined, { minimumFractionDigits: 2, maximumFractionDigits: 2 })}`;
             resNetRefund.textContent = `€${netRefund.toLocaleString(undefined, { minimumFractionDigits: 2, maximumFractionDigits: 2 })}`;
             resRateLabel.textContent = `(${rate}% VAT)`;
+            
+            trackRefundEventDebounced(spend, rate);
         }
 
         refundSpendInput.addEventListener('input', () => {
