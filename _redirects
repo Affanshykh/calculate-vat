@@ -1,0 +1,7 @@
+# Redirects mapping
+/home        /index.html   301
+/rates       /vat-rates-ireland.html 301
+/threshold   /vat-registration-threshold-ireland.html 301
+/checker     /vat-checker-vies.html 301
+/refund      /vat-refund-ireland.html 301
+/electricity /vat-on-electricity-ireland.html 301

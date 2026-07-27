@@ -1,0 +1,344 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>VAT on Electricity Ireland 2026 | 9% Rate Explained</title>
+    <meta name="description" content="VAT on electricity in Ireland is 9%, extended to 2030. See how it's applied to your bill, standing charges & PSO levy, plus energy support schemes.">
+    <meta name="keywords" content="vat on electricity ireland, vat on electricity, electricity vat rate ireland, electricity vat rate, electricity gas vat rates">
+    <link rel="canonical" href="https://calculate-vat.com/vat-on-electricity-ireland.html">
+    
+    <!-- Google Fonts -->
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700&family=Outfit:wght@400;500;600;700;800&display=swap" rel="stylesheet">
+    
+    <!-- Favicon -->
+    <link rel="icon" type="image/svg+xml" href="favicon.svg">
+    
+    <!-- CSS stylesheet -->
+    <link rel="stylesheet" href="styles.css">
+</head>
+<body class="light-theme country-ie" data-page-type="electricity-ie">
+    <header class="app-header">
+        <div class="container header-container">
+            <a href="index.html" class="logo">
+                <svg class="logo-svg" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round">
+                    <rect x="3" y="3" width="18" height="18" rx="2" ry="2"></rect>
+                    <line x1="9" y1="9" x2="15" y2="15"></line>
+                    <circle cx="15" cy="9" r="1" fill="currentColor"></circle>
+                    <circle cx="9" cy="15" r="1" fill="currentColor"></circle>
+                </svg>
+                <span class="logo-text">Calculate<span>VAT</span></span>
+            </a>
+            <nav class="app-nav">
+                <a href="index.html" class="nav-link">Home</a>
+                <a href="vat-rates-ireland.html" class="nav-link">VAT Rates IE</a>
+                <a href="vat-registration-threshold-ireland.html" class="nav-link">Thresholds</a>
+                <a href="vat-on-electricity-ireland.html" class="nav-link">Electricity VAT</a>
+                <a href="vat-checker-vies.html" class="nav-link">VIES Checker</a>
+                <a href="vat-refund-ireland.html" class="nav-link">Tourist Refunds</a>
+            </nav>
+        </div>
+    </header>
+
+    <main class="container">
+        <!-- Main Calculator Section -->
+        <section class="calculator-hero">
+            <div class="hero-text">
+                <h1>VAT on Electricity Ireland</h1>
+                <p class="subtitle">VAT on electricity in Ireland is charged at a reduced rate to help households and businesses manage the cost of energy. Calculate your bill tax below using the 9% locked calculator.</p>
+            </div>
+
+            <div class="calculator-container">
+                <!-- Calculator Inputs -->
+                <div class="calculator-card">
+                    <!-- Country Tab Selector (Locked on IE) -->
+                    <div class="country-selector">
+                        <button type="button" class="country-tab active" id="tab-ie" data-country="IE">
+                            Ireland (EUR €)
+                        </button>
+                    </div>
+
+                    <!-- Mode Selector (Add / Remove) -->
+                    <div class="mode-selector">
+                        <label class="mode-option">
+                            <input type="radio" name="calc-mode" value="add" checked>
+                            <span class="mode-box">
+                                <span class="mode-icon">+</span>
+                                <span class="mode-label">Add VAT <small>(Net to Gross)</small></span>
+                            </span>
+                        </label>
+                        <label class="mode-option">
+                            <input type="radio" name="calc-mode" value="remove">
+                            <span class="mode-box">
+                                <span class="mode-icon">−</span>
+                                <span class="mode-label">Remove VAT <small>(Calculate Backwards)</small></span>
+                            </span>
+                        </label>
+                    </div>
+
+                    <!-- Input Amount -->
+                    <div class="form-group">
+                        <label for="amount-input" id="amount-label">Amount (Net / Ex. VAT)</label>
+                        <div class="input-wrapper">
+                            <span class="currency-symbol" id="curr-symbol">€</span>
+                            <input type="number" id="amount-input" value="252.92" step="any" min="0" placeholder="0.00">
+                        </div>
+                    </div>
+
+                    <!-- VAT Rates Presets (Locked on 9%) -->
+                    <div class="form-group">
+                        <label>VAT Rate Locked to 9% (Gas & Electricity)</label>
+                        <div class="rate-presets hidden" id="rate-presets-container"></div>
+                        <div class="custom-rate-wrapper hidden" id="custom-rate-group"></div>
+                    </div>
+                </div>
+
+                <!-- Calculator Outputs & Visual Breakdown -->
+                <div class="results-card">
+                    <h3 class="results-title">Calculation Results</h3>
+                    
+                    <div class="results-grid">
+                        <div class="result-item" id="net-result-box">
+                            <div class="result-meta">
+                                <span class="result-label">Net Amount <span class="subtext">(Excl. VAT)</span></span>
+                                <button class="copy-btn" data-copy="net" aria-label="Copy Net Amount">
+                                    <svg class="copy-icon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><rect x="9" y="9" width="13" height="13" rx="2" ry="2"></rect><path d="M5 15H4a2 2 0 0 1-2-2V4a2 2 0 0 1 2-2h9a2 2 0 0 1 2 2v1"></path></svg>
+                                    <span class="tooltip">Copied!</span>
+                                </button>
+                            </div>
+                            <div class="result-value" id="net-value">€252.92</div>
+                        </div>
+
+                        <div class="result-item highlight" id="vat-result-box">
+                            <div class="result-meta">
+                                <span class="result-label">VAT Amount <span class="subtext" id="vat-applied-label">(9% VAT)</span></span>
+                                <button class="copy-btn" data-copy="vat" aria-label="Copy VAT Amount">
+                                    <svg class="copy-icon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><rect x="9" y="9" width="13" height="13" rx="2" ry="2"></rect><path d="M5 15H4a2 2 0 0 1-2-2V4a2 2 0 0 1 2-2h9a2 2 0 0 1 2 2v1"></path></svg>
+                                    <span class="tooltip">Copied!</span>
+                                </button>
+                            </div>
+                            <div class="result-value text-accent" id="vat-value">€22.76</div>
+                        </div>
+
+                        <div class="result-item" id="gross-result-box">
+                            <div class="result-meta">
+                                <span class="result-label">Gross Amount <span class="subtext">(Incl. VAT)</span></span>
+                                <button class="copy-btn" data-copy="gross" aria-label="Copy Gross Amount">
+                                    <svg class="copy-icon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><rect x="9" y="9" width="13" height="13" rx="2" ry="2"></rect><path d="M5 15H4a2 2 0 0 1-2-2V4a2 2 0 0 1 2-2h9a2 2 0 0 1 2 2v1"></path></svg>
+                                    <span class="tooltip">Copied!</span>
+                                </button>
+                            </div>
+                            <div class="result-value" id="gross-value">€275.68</div>
+                        </div>
+                    </div>
+
+                    <!-- Interactive SVG Ring Chart -->
+                    <div class="chart-container">
+                        <svg class="donut-chart" viewBox="0 0 200 200">
+                            <circle class="donut-track" cx="100" cy="100" r="70" fill="none" stroke-width="20"></circle>
+                            <circle class="donut-segment donut-net" id="chart-net-seg" cx="100" cy="100" r="70" fill="none" stroke-width="20"></circle>
+                            <circle class="donut-segment donut-vat" id="chart-vat-seg" cx="100" cy="100" r="70" fill="none" stroke-width="20"></circle>
+                            <g class="donut-text-group">
+                                <text class="donut-percent" x="100" y="95" text-anchor="middle" id="chart-vat-percentage">8.3%</text>
+                                <text class="donut-sub" x="100" y="120" text-anchor="middle">VAT Portion</text>
+                            </g>
+                        </svg>
+                        <div class="chart-legend">
+                            <div class="legend-item">
+                                <span class="legend-color legend-net-color"></span>
+                                <span>Net: <strong id="legend-net-pct">91.7%</strong></span>
+                            </div>
+                            <div class="legend-item">
+                                <span class="legend-color legend-vat-color"></span>
+                                <span>VAT: <strong id="legend-vat-pct">8.3%</strong></span>
+                            </div>
+                        </div>
+                    </div>
+
+                    <!-- Calculator Actions (Save & Share) -->
+                    <div class="calculator-actions">
+                        <button class="save-history-btn" id="save-history">
+                            <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M19 21H5a2 2 0 0 1-2-2V5a2 2 0 0 1 2-2h11l5 5v11a2 2 0 0 1-2 2z"></path><polyline points="17 21 17 13 7 13 7 21"></polyline><polyline points="7 3 7 8 15 8"></polyline></svg>
+                            Save
+                        </button>
+                        <button class="share-btn" id="share-calculation">
+                            <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M4 12v8a2 2 0 0 0 2 2h12a2 2 0 0 0 2-2v-8"></path><polyline points="16 6 12 2 8 6"></polyline><line x1="12" y1="2" x2="12" y2="15"></line></svg>
+                            Share
+                            <span class="tooltip">Link Copied!</span>
+                        </button>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <!-- Curated Electricity Content -->
+        <section class="vat-guide card">
+            <h2>Electricity Bill VAT Guide</h2>
+            <div class="guide-content">
+                <div class="guide-section">
+                    <p>VAT on electricity in Ireland is charged at a reduced rate to help households and businesses manage the cost of energy. Unlike most utilities in the standard tax system (with standard 23% and reduced 13.5% tiers, see the full <a href="vat-rates-ireland.html">VAT Rates Ireland</a> guide), domestic gas and electricity have been deliberately moved to a lower VAT band as part of a series of government measures aimed at easing energy bills during a period of high and volatile prices. Because VAT is applied to the whole supply — standing charges, unit consumption, and levies alike — the rate that applies makes a real difference to what you pay each billing cycle. This page explains the current electricity VAT rate in Ireland, how it feeds into your bill, and the wider support schemes that sit alongside it.</p>
+                </div>
+
+                <div class="guide-section">
+                    <h3>Current VAT Rate on Electricity and Gas</h3>
+                    <p>The current VAT rate on electricity and gas in Ireland is <strong>9%</strong>. This is a reduced rate, sitting below both the 23% standard rate and the 13.5% rate that ordinarily applies to domestic fuel.</p>
+                    <p>The 9% electricity and gas VAT rate has a specific history. The government first cut VAT on domestic gas and electricity from 13.5% to 9% in 2022 as a temporary inflation-relief measure, at a time when energy prices were spiking to record levels. Rather than lapse, the reduced rate was extended repeatedly through successive budgets as high energy costs persisted. In <strong>Budget 2026, the 9% rate was extended all the way to 31 December 2030</strong> — a much longer runway than the short rolling extensions of previous years, giving households and suppliers several years of certainty.</p>
+                    <p>The significance of this extension is straightforward: had the rate been allowed to revert to 13.5%, energy bills would have jumped by an automatic 4.5 percentage points of VAT overnight. By locking in 9% through the end of the decade, the measure shields consumers from that increase even as one-off supports are wound down. It is estimated that the reduced rate saves a typical electricity customer roughly €90 a year, and a gas customer around €62, compared with the 13.5% rate.</p>
+                    <p>After 31 December 2030, the rate is currently scheduled to revert to 13.5% unless a future budget extends it again through the normal budgetary process.</p>
+                </div>
+
+                <div class="guide-section">
+                    <h3>How to Calculate VAT on Electricity Bills</h3>
+                    <p>A common misconception is that VAT applies only to the energy you use. In fact, <strong>VAT at 9% is applied to almost the entire bill</strong> — the standing charge, your usage charges, and the PSO levy are all included in the amount VAT is calculated on. This is why the tax cannot simply be worked out from your unit consumption alone.</p>
+                    
+                    <p>Here is a simplified worked example for a two-month domestic electricity bill (figures are illustrative):</p>
+                    <div class="table-responsive" style="margin: 1rem 0;">
+                        <table class="history-table" style="display:table;">
+                            <thead>
+                                <tr>
+                                    <th>Bill component</th>
+                                    <th>Amount (ex VAT)</th>
+                                </tr>
+                            </thead>
+                            <tbody>
+                                <tr>
+                                    <td>Standing charge</td>
+                                    <td>€40.00</td>
+                                </tr>
+                                <tr>
+                                    <td>Electricity usage (e.g. 700 kWh)</td>
+                                    <td>€210.00</td>
+                                </tr>
+                                <tr>
+                                    <td>PSO levy (approx. €1.46/month × 2)</td>
+                                    <td>€2.92</td>
+                                </tr>
+                                <tr>
+                                    <td><strong>Subtotal (ex VAT)</strong></td>
+                                    <td><strong>€252.92</strong></td>
+                                </tr>
+                                <tr>
+                                    <td class="text-accent">VAT at 9%</td>
+                                    <td class="text-accent">€22.76</td>
+                                </tr>
+                                <tr>
+                                    <td><strong>Total (inc VAT)</strong></td>
+                                    <td><strong>€275.68</strong></td>
+                                </tr>
+                            </tbody>
+                        </table>
+                    </div>
+
+                    <p>The steps are:</p>
+                    <ol class="steps-list" style="margin-bottom:1rem;">
+                        <li><strong>Add up all the taxable components</strong> — standing charge, usage, and the PSO levy — to get the net (ex-VAT) subtotal. Here that is €252.92.</li>
+                        <li><strong>Apply 9% VAT to the subtotal:</strong> €252.92 × 0.09 = €22.76.</li>
+                        <li><strong>Add the VAT to the subtotal</strong> to reach the gross total: €252.92 + €22.76 = €275.68.</li>
+                    </ol>
+                    <p>The 9% calculator on this page does exactly this for whatever figures you enter, so you can check the VAT element of your own bill. Note that the PSO levy is quoted exclusive of VAT and then has the 9% applied on top like every other line — it is not VAT-free.</p>
+                </div>
+
+                <div class="guide-section">
+                    <h3>Inflation Relief & Support Schemes</h3>
+                    <p>The reduced VAT rate is one part of a broader set of measures used to cushion households against energy costs. Several schemes have operated alongside it:</p>
+                    <ul class="resources-list" style="margin-bottom:1rem;">
+                        <li><strong>Universal electricity credits.</strong> During the peak of the energy crisis, the government issued one-off electricity credits applied directly to domestic accounts — for example, €250 in the 2024/25 winter, paid in instalments. However, with inflation easing, <strong>Budget 2026 did not include a new round of universal electricity credits</strong>, pivoting instead toward the longer-term VAT reduction as the main permanent support.</li>
+                        <li><strong>Fuel Allowance.</strong> The Fuel Allowance, a targeted social welfare payment for eligible households, was increased by €5 per week in Budget 2026, with eligibility expanded from March 2026 to include recipients of the Working Family Payment.</li>
+                        <li><strong>Carbon tax and its ring-fenced uses.</strong> The carbon tax rose to €71 per tonne of CO₂ under Budget 2026, in line with the trajectory to reach €100 per tonne by 2030. While carbon tax revenue increases the cost of certain fuels, it is partly ring-fenced to fund energy-efficiency measures, retrofitting grants (via the <a href="https://www.seai.ie" target="_blank" rel="noopener noreferrer">Sustainable Energy Authority of Ireland (SEAI)</a>), and targeted social protection payments that help offset the impact on lower-income households.</li>
+                        <li><strong>Retrofitting and efficiency grants.</strong> SEAI grant schemes support home insulation, heat pumps, and solar installations, reducing consumption and therefore the base on which both energy charges and VAT are calculated.</li>
+                    </ul>
+                    <p>Together these measures shift the emphasis from temporary cash credits toward structural supports — a lasting reduced VAT rate plus targeted allowances and efficiency investment.</p>
+                </div>
+
+                <!-- FAQ Section -->
+                <div class="guide-section">
+                    <h3>Frequently Asked Questions</h3>
+                    <div class="accordion">
+                        <div class="accordion-item">
+                            <button class="accordion-header">
+                                <span>What is the VAT rate on electricity in Ireland?</span>
+                                <svg class="accordion-arrow" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><polyline points="6 9 12 15 18 9"></polyline></svg>
+                            </button>
+                            <div class="accordion-content">
+                                <p>The VAT rate on electricity in Ireland is 9%. This reduced rate, first introduced in 2022 as an inflation-relief measure, was extended in Budget 2026 to run until 31 December 2030. It applies to the whole electricity bill, including the standing charge, usage, and the PSO levy.</p>
+                            </div>
+                        </div>
+
+                        <div class="accordion-item">
+                            <button class="accordion-header">
+                                <span>Does 9% VAT apply to commercial utility accounts?</span>
+                                <svg class="accordion-arrow" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><polyline points="6 9 12 15 18 9"></polyline></svg>
+                            </button>
+                            <div class="accordion-content">
+                                <p>Yes. The 9% reduced VAT rate on electricity and gas applies to the supply itself, so business and commercial accounts are charged 9% VAT on their energy bills in the same way as domestic customers. VAT-registered businesses can generally reclaim this VAT as an input credit, subject to normal VAT recovery rules.</p>
+                            </div>
+                        </div>
+
+                        <div class="accordion-item">
+                            <button class="accordion-header">
+                                <span>Is the carbon tax subject to VAT?</span>
+                                <svg class="accordion-arrow" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><polyline points="6 9 12 15 18 9"></polyline></svg>
+                            </button>
+                            <div class="accordion-content">
+                                <p>Yes, where carbon tax forms part of a fuel bill it is included in the amount on which VAT is charged. Carbon tax primarily affects gas, home heating oil, and motor fuels rather than electricity-only accounts, but on gas and dual-fuel bills the carbon tax is part of the taxable value and has VAT applied on top of it.</p>
+                            </div>
+                        </div>
+
+                        <div class="accordion-item">
+                            <button class="accordion-header">
+                                <span>Is the PSO levy subject to VAT?</span>
+                                <svg class="accordion-arrow" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><polyline points="6 9 12 15 18 9"></polyline></svg>
+                            </button>
+                            <div class="accordion-content">
+                                <p>Yes. The Public Service Obligation (PSO) levy on electricity bills is quoted exclusive of VAT, and the 9% VAT rate is then applied to it along with the rest of the bill. It is not a VAT-free charge — it forms part of the net total that the 9% rate is calculated on (see the official <a href="https://www.cru.ie" target="_blank" rel="noopener noreferrer">Commission for Regulation of Utilities (CRU)</a> guidance for current levy schedules).</p>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </section>
+    </main>
+
+    <footer class="app-footer">
+        <div class="container">
+            <div class="footer-grid">
+                <div class="footer-col">
+                    <h4>Information</h4>
+                    <ul class="footer-links">
+                        <li><a href="about-us.html">About Us</a></li>
+                        <li><a href="terms-conditions.html">Terms & Conditions</a></li>
+                        <li><a href="privacy-policy.html">Privacy Policy</a></li>
+                    </ul>
+                </div>
+                <div class="footer-col">
+                    <h4>Sitemaps</h4>
+                    <ul class="footer-links">
+                        <li><a href="sitemap.html">HTML Sitemap</a></li>
+                        <li><a href="sitemap.xml" target="_blank">XML Sitemap</a></li>
+                    </ul>
+                </div>
+                <div class="footer-col">
+                    <h4>Featured Guides</h4>
+                    <ul class="footer-links">
+                        <li><a href="vat-rates-ireland.html">VAT Rates Ireland</a></li>
+                        <li><a href="vat-registration-threshold-ireland.html">VAT Thresholds Ireland</a></li>
+                        <li><a href="vat-on-electricity-ireland.html">VAT on Electricity</a></li>
+                        <li><a href="vat-checker-vies.html">VIES VAT Checker</a></li>
+                        <li><a href="vat-refund-ireland.html">Tourist VAT Refunds</a></li>
+                    </ul>
+                </div>
+            </div>
+            <div class="footer-bottom">
+                <p>&copy; 2026 calculate-vat.com. All rights reserved.</p>
+                <p class="disclaimer">Disclaimer: While we strive to ensure absolute mathematical and tax accuracy, these calculations are for informational purposes. Please consult an accountant or tax professional before making financial decisions.</p>
+                <p class="footer-author">Made with ❤️ by <a href="https://affanahmed.de" target="_blank" rel="noopener noreferrer">Affan Ahmed</a></p>
+            </div>
+        </div>
+    </footer>
+
+    <!-- App Logic script -->
+    <script src="app.js"></script>
+</body>
+</html>

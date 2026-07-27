@@ -1,0 +1,228 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>VIES VAT Number Checker | Verify Irish, EU & UK VAT</title>
+    <meta name="description" content="Check & validate any VAT number free. Verify Irish (IE), EU via VIES and UK (GB) numbers with HMRC. Instant format validation for tax-free trade.">
+    <meta name="keywords" content="vat number check, check irish vat number, vat checker, vat checker ireland, verify irish vat number, vies vat checker, vies vat validation, vies vat number, vies vat, gb vat checker, vat checker uk, uk vat number check, eu vat checker, check eu vat number, vat validation, vat search, vat lookup, what is a vat number, vies vat number validation">
+    <link rel="canonical" href="https://calculate-vat.com/vat-checker-vies.html">
+    
+    <!-- Google Fonts -->
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700&family=Outfit:wght@400;500;600;700;800&display=swap" rel="stylesheet">
+    
+    <!-- Favicon -->
+    <link rel="icon" type="image/svg+xml" href="favicon.svg">
+    
+    <!-- CSS stylesheet -->
+    <link rel="stylesheet" href="styles.css">
+</head>
+<body class="light-theme country-ie" data-page-type="vies-checker">
+    <header class="app-header">
+        <div class="container header-container">
+            <a href="index.html" class="logo">
+                <svg class="logo-svg" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round">
+                    <rect x="3" y="3" width="18" height="18" rx="2" ry="2"></rect>
+                    <line x1="9" y1="9" x2="15" y2="15"></line>
+                    <circle cx="15" cy="9" r="1" fill="currentColor"></circle>
+                    <circle cx="9" cy="15" r="1" fill="currentColor"></circle>
+                </svg>
+                <span class="logo-text">Calculate<span>VAT</span></span>
+            </a>
+            <nav class="app-nav">
+                <a href="index.html" class="nav-link">Home</a>
+                <a href="vat-rates-ireland.html" class="nav-link">VAT Rates IE</a>
+                <a href="vat-registration-threshold-ireland.html" class="nav-link">Thresholds</a>
+                <a href="vat-on-electricity-ireland.html" class="nav-link">Electricity VAT</a>
+                <a href="vat-checker-vies.html" class="nav-link">VIES Checker</a>
+                <a href="vat-refund-ireland.html" class="nav-link">Tourist Refunds</a>
+            </nav>
+        </div>
+    </header>
+
+    <main class="container">
+        <!-- Main VAT Checker Section -->
+        <section class="calculator-hero">
+            <div class="hero-text">
+                <h1>VIES VAT Number Checker</h1>
+                <p class="subtitle">Verifying a business partner's VAT number is one of the most important due-diligence steps in cross-border trade. Use our format validator below to verify Irish, UK, and European VAT structures.</p>
+            </div>
+
+            <div class="calculator-container">
+                <!-- Checker Form Card -->
+                <div class="calculator-card">
+                    <h3 class="results-title">Validation Panel</h3>
+                    <div class="checker-form">
+                        <div class="form-group">
+                            <label for="checker-country-select">Country Code Prefix</label>
+                            <div class="select-wrapper">
+                                <select id="checker-country-select">
+                                    <option value="IE">Ireland (IE)</option>
+                                    <option value="GB">United Kingdom (GB)</option>
+                                    <option value="XI">Northern Ireland (XI)</option>
+                                    <option value="DE">Germany (DE)</option>
+                                    <option value="FR">France (FR)</option>
+                                    <option value="IT">Italy (IT)</option>
+                                    <option value="ES">Spain (ES)</option>
+                                </select>
+                            </div>
+                        </div>
+
+                        <div class="form-group">
+                            <label for="checker-vat-input">VAT Registration Number</label>
+                            <div class="input-wrapper checker-input">
+                                <input type="text" id="checker-vat-input" placeholder="e.g. 1234567A" autocomplete="off" spellcheck="false">
+                            </div>
+                        </div>
+
+                        <button type="button" class="validate-btn" id="checker-validate-btn">
+                            Validate VAT Number
+                        </button>
+                    </div>
+                </div>
+
+                <!-- Validation Output display card -->
+                <div class="checker-result-card" id="checker-result-box">
+                    <div style="text-align:center; color:var(--text-muted);">
+                        <p>Enter the country and registration number, then click "Validate VAT Number" to review the status.</p>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <!-- Curated Checker Guide Content -->
+        <section class="vat-guide card">
+            <h2>VIES VAT Number Verification Guide</h2>
+            <div class="guide-content">
+                <div class="guide-section">
+                    <p>Verifying a business partner's VAT number is one of the most important due-diligence steps in cross-border trade across Ireland, the UK, and the wider European Union. A valid VAT number is what allows you to zero-rate intra-EU supplies (refer to our comprehensive <a href="vat-rates-ireland.html">VAT Rates Ireland</a> guide to check rates), protect your input VAT reclaims, and demonstrate to Revenue or HMRC that you took reasonable steps to confirm who you were dealing with. Get it wrong and you risk rejected VAT claims, unexpected liabilities, and exposure to VAT fraud. This page's format validator instantly checks whether a VAT number is structured correctly for its country before you take the next step and confirm it against the official live databases. Below, we explain how VAT numbers are formatted, how to check Irish and UK numbers specifically, and how the EU's VIES system works.</p>
+                </div>
+
+                <div class="guide-section">
+                    <h3>What is a VAT Number?</h3>
+                    <p>A VAT number (VAT identification number) is a unique code issued to a business when it registers for Value-Added Tax. It identifies the business to the tax authorities and to its trading partners, and it must appear on VAT invoices so that customers can reclaim the tax and authorities can trace the supply chain.</p>
+                    <p>Every EU VAT number follows a common pattern: a <strong>two-letter country code prefix</strong> followed by a national registration number of up to twelve characters, with the exact length and structure varying by country. A few examples illustrate the variety:</p>
+                    <ul class="resources-list" style="margin-bottom:1rem;">
+                        <li><strong>Ireland (IE):</strong> IE followed by 7 digits and 1 or 2 letters (e.g. IE1234567A or IE1234567AB)</li>
+                        <li><strong>Germany (DE):</strong> DE followed by 9 digits</li>
+                        <li><strong>France (FR):</strong> FR followed by 2 characters and 9 digits</li>
+                        <li><strong>United Kingdom (GB):</strong> GB followed by 9 digits (or 12 for branch traders)</li>
+                        <li><strong>Northern Ireland (XI):</strong> XI followed by 9 digits, for goods trade with the EU</li>
+                    </ul>
+                    <p>One frequent trap: <strong>Greece uses the prefix EL</strong>, not GR. Another is confusing the country code with the number itself — in official databases the country is selected from a dropdown and the number is entered without its prefix.</p>
+                </div>
+
+                <div class="guide-section">
+                    <h3>How to Check an Irish VAT Number</h3>
+                    <p>Checking an Irish VAT number is a two-stage process: first validate the <strong>format</strong>, then confirm the number is <strong>live and registered</strong>.</p>
+                    <p><strong>Step 1 — Format validation.</strong> An Irish VAT number begins with the <strong>IE</strong> prefix, followed by <strong>7 numeric digits and 1 or 2 letters</strong>. Older-style numbers take the form of 7 digits plus one trailing letter (IE1234567A); newer numbers can include a second letter (IE1234567AB), and some formats include a "+" or "*" character in the second position. The validator on this page checks that the number you enter matches this expected pattern, catching typos and transposed characters instantly.</p>
+                    <p><strong>Step 2 — Live validation via VIES.</strong> A correct format does not prove the number is real or currently active. To confirm that, check the number against the official <a href="https://ec.europa.eu/taxation_customs/vies/" target="_blank" rel="noopener noreferrer">VIES database</a>, which queries Ireland's Revenue records in real time. Select "Ireland (IE)" from the member-state dropdown, enter the number without the prefix, and VIES returns "valid" or "invalid" along with the business name and address where data-protection rules permit.</p>
+                    <p>Keep a record — a screenshot or the VIES consultation number — as evidence that you checked, since the legal protection attaches to the date of the check.</p>
+                </div>
+
+                <div class="guide-section">
+                    <h3>UK VAT Number Validation (HMRC)</h3>
+                    <p>Since the UK left the EU, <strong>GB VAT numbers can no longer be checked on VIES</strong>. The European Commission removed the UK from VIES on <strong>1 January 2021</strong>, so any GB number entered into VIES will simply return "invalid" — not because the business is unregistered, but because the UK is no longer in that system.</p>
+                    <p>To validate a UK VAT number, use the official <a href="https://www.gov.uk/check-uk-vat-number" target="_blank" rel="noopener noreferrer">HMRC UK VAT number checker</a> service on GOV.UK. A GB number is 9 digits (or 12 for branch traders); enter it without the GB prefix, and HMRC confirms whether the registration is valid and shows the registered business name and address. HMRC is now the authoritative registry for UK VAT.</p>
+                    <p><strong>Northern Ireland is the key exception.</strong> Under the Windsor Framework (formerly the Northern Ireland Protocol), Northern Ireland remains aligned with EU VAT rules for <strong>goods</strong>. NI businesses trading goods with the EU use an <strong>XI-prefixed</strong> VAT number, and — crucially — <strong>XI numbers remain checkable on VIES</strong>, not through HMRC. This means a single NI business may hold both a GB number (for UK domestic purposes and services) and an XI number (valid on VIES for goods trade with the EU). Choosing the right system for the prefix in front of you — GB to HMRC, XI to VIES — is one of the most common post-Brexit verification mistakes.</p>
+                </div>
+
+                <div class="guide-section">
+                    <h3>VIES VAT System Explained</h3>
+                    <p><strong>VIES</strong> (the <strong>VAT Information Exchange System</strong>) is the European Commission's free, real-time tool for validating VAT numbers issued anywhere in the EU, plus Northern Ireland (XI) numbers for goods. Rather than holding one central list, VIES acts as a search engine that queries each member state's own national VAT database at the moment you make the request, returning a live "valid" or "invalid" result.</p>
+                    <p>VIES is established under <strong>Council Regulation (EU) 904/2010</strong> on administrative cooperation in the field of VAT, which legally obliges each member state to maintain an accurate, queryable registry of its VAT-registered traders (if your business has recently crossed thresholds requiring registration, review our <a href="vat-registration-threshold-ireland.html">VAT Thresholds Ireland</a> guide). When you run a check, VIES can issue a <strong>consultation number</strong> — a reference with evidentiary value across all 27 member states that proves you verified the number on a specific date. This matters for international reporting: a valid customer VAT number is the basis for zero-rating intra-EU supplies of goods and for the associated recapitulative statements (EC Sales Lists) that businesses file to report those cross-border transactions.</p>
+                    <p>Because VAT status can change from day to day, a check protects you only for the date it was made — validating once and relying on the result indefinitely is not sufficient for ongoing trading relationships.</p>
+                </div>
+
+                <!-- FAQ Section -->
+                <div class="guide-section">
+                    <h3>Frequently Asked Questions</h3>
+                    <div class="accordion">
+                        <div class="accordion-item">
+                            <button class="accordion-header">
+                                <span>What is a VIES VAT checker?</span>
+                                <svg class="accordion-arrow" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><polyline points="6 9 12 15 18 9"></polyline></svg>
+                            </button>
+                            <div class="accordion-content">
+                                <p>A VIES VAT checker is a free European Commission tool that verifies whether an EU (or Northern Ireland XI) VAT number is valid in real time. It queries each member state's national VAT database and returns a "valid" or "invalid" result, usually with the registered business name and address.</p>
+                            </div>
+                        </div>
+
+                        <div class="accordion-item">
+                            <button class="accordion-header">
+                                <span>How do I verify an Irish VAT number?</span>
+                                <svg class="accordion-arrow" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><polyline points="6 9 12 15 18 9"></polyline></svg>
+                            </button>
+                            <div class="accordion-content">
+                                <p>To verify an Irish VAT number, first check its format — IE followed by 7 digits and 1 or 2 letters — then confirm it on the VIES portal by selecting "Ireland" and entering the number without the IE prefix. VIES checks Revenue's live records and returns whether the number is currently valid.</p>
+                            </div>
+                        </div>
+
+                        <div class="accordion-item">
+                            <button class="accordion-header">
+                                <span>What does it mean if a VAT number is invalid on VIES?</span>
+                                <svg class="accordion-arrow" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><polyline points="6 9 12 15 18 9"></polyline></svg>
+                            </button>
+                            <div class="accordion-content">
+                                <p>An invalid result usually means the number is mistyped, not yet active, deregistered, or entered under the wrong country. It can also mean the business is not authorised for intra-EU trade. Note that GB (UK) numbers always show invalid on VIES since 2021 — use HMRC's checker instead.</p>
+                            </div>
+                        </div>
+
+                        <div class="accordion-item">
+                            <button class="accordion-header">
+                                <span>Can I look up a VAT number using a company name?</span>
+                                <svg class="accordion-arrow" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><polyline points="6 9 12 15 18 9"></polyline></svg>
+                            </button>
+                            <div class="accordion-content">
+                                <p>No. VIES and HMRC only validate a VAT number you already have; you cannot search by company name to find a business's number. To obtain a partner's VAT number, request it directly from the business or take it from their invoice, then validate it.</p>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </section>
+    </main>
+
+    <footer class="app-footer">
+        <div class="container">
+            <div class="footer-grid">
+                <div class="footer-col">
+                    <h4>Information</h4>
+                    <ul class="footer-links">
+                        <li><a href="about-us.html">About Us</a></li>
+                        <li><a href="terms-conditions.html">Terms & Conditions</a></li>
+                        <li><a href="privacy-policy.html">Privacy Policy</a></li>
+                    </ul>
+                </div>
+                <div class="footer-col">
+                    <h4>Sitemaps</h4>
+                    <ul class="footer-links">
+                        <li><a href="sitemap.html">HTML Sitemap</a></li>
+                        <li><a href="sitemap.xml" target="_blank">XML Sitemap</a></li>
+                    </ul>
+                </div>
+                <div class="footer-col">
+                    <h4>Featured Guides</h4>
+                    <ul class="footer-links">
+                        <li><a href="vat-rates-ireland.html">VAT Rates Ireland</a></li>
+                        <li><a href="vat-registration-threshold-ireland.html">VAT Thresholds Ireland</a></li>
+                        <li><a href="vat-on-electricity-ireland.html">VAT on Electricity</a></li>
+                        <li><a href="vat-checker-vies.html">VIES VAT Checker</a></li>
+                        <li><a href="vat-refund-ireland.html">Tourist VAT Refunds</a></li>
+                    </ul>
+                </div>
+            </div>
+            <div class="footer-bottom">
+                <p>&copy; 2026 calculate-vat.com. All rights reserved.</p>
+                <p class="disclaimer">Disclaimer: While we strive to ensure absolute mathematical and tax accuracy, these calculations are for informational purposes. Please consult an accountant or tax professional before making financial decisions.</p>
+                <p class="footer-author">Made with ❤️ by <a href="https://affanahmed.de" target="_blank" rel="noopener noreferrer">Affan Ahmed</a></p>
+            </div>
+        </div>
+    </footer>
+
+    <!-- App Logic script -->
+    <script src="app.js"></script>
+</body>
+</html>

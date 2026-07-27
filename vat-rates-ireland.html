@@ -1,0 +1,395 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>VAT Rates Ireland 2026 | 23%, 13.5%, 9% & 0% Guide</title>
+    <meta name="description" content="Every Irish VAT rate for 2026 explained: 23% standard, 13.5%, new 9% hospitality rate, 4.8% livestock & 0% zero-rate. See what applies to food & services.">
+    <meta name="keywords" content="vat rate ireland, irish vat rates, vat ireland, vat on food ireland, vat exempt ireland, standard vat rate ireland, current vat rate ireland, vat on services ireland, service vat rate ireland, what percentage is vat in ireland, how much is vat in ireland, irish vat, reduced rate of vat ireland">
+    <link rel="canonical" href="https://calculate-vat.com/vat-rates-ireland.html">
+    
+    <!-- Google Fonts -->
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700&family=Outfit:wght@400;500;600;700;800&display=swap" rel="stylesheet">
+    
+    <!-- Favicon -->
+    <link rel="icon" type="image/svg+xml" href="favicon.svg">
+    
+    <!-- CSS stylesheet -->
+    <link rel="stylesheet" href="styles.css">
+</head>
+<body class="light-theme country-ie" data-page-type="rates-ie">
+    <header class="app-header">
+        <div class="container header-container">
+            <a href="index.html" class="logo">
+                <svg class="logo-svg" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round">
+                    <rect x="3" y="3" width="18" height="18" rx="2" ry="2"></rect>
+                    <line x1="9" y1="9" x2="15" y2="15"></line>
+                    <circle cx="15" cy="9" r="1" fill="currentColor"></circle>
+                    <circle cx="9" cy="15" r="1" fill="currentColor"></circle>
+                </svg>
+                <span class="logo-text">Calculate<span>VAT</span></span>
+            </a>
+            <nav class="app-nav">
+                <a href="index.html" class="nav-link">Home</a>
+                <a href="vat-rates-ireland.html" class="nav-link">VAT Rates IE</a>
+                <a href="vat-registration-threshold-ireland.html" class="nav-link">Thresholds</a>
+                <a href="vat-on-electricity-ireland.html" class="nav-link">Electricity VAT</a>
+                <a href="vat-checker-vies.html" class="nav-link">VIES Checker</a>
+                <a href="vat-refund-ireland.html" class="nav-link">Tourist Refunds</a>
+            </nav>
+        </div>
+    </header>
+
+    <main class="container">
+        <!-- Main Calculator Section -->
+        <section class="calculator-hero">
+            <div class="hero-text">
+                <h1>VAT Rates Ireland 2026</h1>
+                <p class="subtitle">Value-Added Tax (VAT) is a consumption tax charged on most goods and services supplied in the Republic of Ireland. Read the full rates structure below and calculate rates instantly using the locked Irish VAT calculator.</p>
+            </div>
+
+            <div class="calculator-container">
+                <!-- Calculator Inputs -->
+                <div class="calculator-card">
+                    <!-- Country Tab Selector (Locked on IE) -->
+                    <div class="country-selector">
+                        <button type="button" class="country-tab active" id="tab-ie" data-country="IE">
+                            Ireland (EUR €)
+                        </button>
+                    </div>
+
+                    <!-- Mode Selector (Add / Remove) -->
+                    <div class="mode-selector">
+                        <label class="mode-option">
+                            <input type="radio" name="calc-mode" value="add" checked>
+                            <span class="mode-box">
+                                <span class="mode-icon">+</span>
+                                <span class="mode-label">Add VAT <small>(Net to Gross)</small></span>
+                            </span>
+                        </label>
+                        <label class="mode-option">
+                            <input type="radio" name="calc-mode" value="remove">
+                            <span class="mode-box">
+                                <span class="mode-icon">−</span>
+                                <span class="mode-label">Remove VAT <small>(Calculate Backwards)</small></span>
+                            </span>
+                        </label>
+                    </div>
+
+                    <!-- Input Amount -->
+                    <div class="form-group">
+                        <label for="amount-input" id="amount-label">Amount (Net / Ex. VAT)</label>
+                        <div class="input-wrapper">
+                            <span class="currency-symbol" id="curr-symbol">€</span>
+                            <input type="number" id="amount-input" value="100" step="any" min="0" placeholder="0.00">
+                        </div>
+                    </div>
+
+                    <!-- VAT Rates Presets -->
+                    <div class="form-group">
+                        <label>VAT Rate (%)</label>
+                        <div class="rate-presets" id="rate-presets-container">
+                            <!-- Populated dynamically via JS -->
+                        </div>
+                        
+                        <!-- Custom Rate Box -->
+                        <div class="custom-rate-wrapper hidden" id="custom-rate-group">
+                            <label for="custom-rate" class="sr-only">Enter Custom VAT Rate</label>
+                            <div class="input-wrapper custom-rate-input">
+                                <input type="number" id="custom-rate" value="23" step="0.1" min="0" max="100">
+                                <span class="rate-suffix">%</span>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- Calculator Outputs & Visual Breakdown -->
+                <div class="results-card">
+                    <h3 class="results-title">Calculation Results</h3>
+                    
+                    <div class="results-grid">
+                        <div class="result-item" id="net-result-box">
+                            <div class="result-meta">
+                                <span class="result-label">Net Amount <span class="subtext">(Excl. VAT)</span></span>
+                                <button class="copy-btn" data-copy="net" aria-label="Copy Net Amount">
+                                    <svg class="copy-icon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><rect x="9" y="9" width="13" height="13" rx="2" ry="2"></rect><path d="M5 15H4a2 2 0 0 1-2-2V4a2 2 0 0 1 2-2h9a2 2 0 0 1 2 2v1"></path></svg>
+                                    <span class="tooltip">Copied!</span>
+                                </button>
+                            </div>
+                            <div class="result-value" id="net-value">€100.00</div>
+                        </div>
+
+                        <div class="result-item highlight" id="vat-result-box">
+                            <div class="result-meta">
+                                <span class="result-label">VAT Amount <span class="subtext" id="vat-applied-label">(23% VAT)</span></span>
+                                <button class="copy-btn" data-copy="vat" aria-label="Copy VAT Amount">
+                                    <svg class="copy-icon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><rect x="9" y="9" width="13" height="13" rx="2" ry="2"></rect><path d="M5 15H4a2 2 0 0 1-2-2V4a2 2 0 0 1 2-2h9a2 2 0 0 1 2 2v1"></path></svg>
+                                    <span class="tooltip">Copied!</span>
+                                </button>
+                            </div>
+                            <div class="result-value text-accent" id="vat-value">€23.00</div>
+                        </div>
+
+                        <div class="result-item" id="gross-result-box">
+                            <div class="result-meta">
+                                <span class="result-label">Gross Amount <span class="subtext">(Incl. VAT)</span></span>
+                                <button class="copy-btn" data-copy="gross" aria-label="Copy Gross Amount">
+                                    <svg class="copy-icon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><rect x="9" y="9" width="13" height="13" rx="2" ry="2"></rect><path d="M5 15H4a2 2 0 0 1-2-2V4a2 2 0 0 1 2-2h9a2 2 0 0 1 2 2v1"></path></svg>
+                                    <span class="tooltip">Copied!</span>
+                                </button>
+                            </div>
+                            <div class="result-value" id="gross-value">€123.00</div>
+                        </div>
+                    </div>
+
+                    <!-- Interactive SVG Ring Chart -->
+                    <div class="chart-container">
+                        <svg class="donut-chart" viewBox="0 0 200 200">
+                            <circle class="donut-track" cx="100" cy="100" r="70" fill="none" stroke-width="20"></circle>
+                            <circle class="donut-segment donut-net" id="chart-net-seg" cx="100" cy="100" r="70" fill="none" stroke-width="20"></circle>
+                            <circle class="donut-segment donut-vat" id="chart-vat-seg" cx="100" cy="100" r="70" fill="none" stroke-width="20"></circle>
+                            <g class="donut-text-group">
+                                <text class="donut-percent" x="100" y="95" text-anchor="middle" id="chart-vat-percentage">18.7%</text>
+                                <text class="donut-sub" x="100" y="120" text-anchor="middle">VAT Portion</text>
+                            </g>
+                        </svg>
+                        <div class="chart-legend">
+                            <div class="legend-item">
+                                <span class="legend-color legend-net-color"></span>
+                                <span>Net: <strong id="legend-net-pct">81.3%</strong></span>
+                            </div>
+                            <div class="legend-item">
+                                <span class="legend-color legend-vat-color"></span>
+                                <span>VAT: <strong id="legend-vat-pct">18.7%</strong></span>
+                            </div>
+                        </div>
+                    </div>
+
+                    <!-- Calculator Actions (Save & Share) -->
+                    <div class="calculator-actions">
+                        <button class="save-history-btn" id="save-history">
+                            <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M19 21H5a2 2 0 0 1-2-2V5a2 2 0 0 1 2-2h11l5 5v11a2 2 0 0 1-2 2z"></path><polyline points="17 21 17 13 7 13 7 21"></polyline><polyline points="7 3 7 8 15 8"></polyline></svg>
+                            Save
+                        </button>
+                        <button class="share-btn" id="share-calculation">
+                            <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M4 12v8a2 2 0 0 0 2 2h12a2 2 0 0 0 2-2v-8"></path><polyline points="16 6 12 2 8 6"></polyline><line x1="12" y1="2" x2="12" y2="15"></line></svg>
+                            Share
+                            <span class="tooltip">Link Copied!</span>
+                        </button>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <!-- Curated Pillar Content -->
+        <section class="vat-guide card">
+            <h2>Pillar Guide: Irish VAT Rates Detailed</h2>
+            <div class="guide-content">
+                <div class="guide-section">
+                    <p>Value-Added Tax (VAT) is a consumption tax charged on most goods and services supplied in the Republic of Ireland, collected at each stage of the supply chain and ultimately borne by the final consumer. Irish VAT rates are set nationally by the Minister for Finance through the annual Budget and Finance Act, administered by the <a href="https://www.revenue.ie" target="_blank" rel="noopener noreferrer">Revenue Commissioners</a>, and applied uniformly across the State — there is no regional or local variation. Ireland operates a multi-rate system, with several rates running side by side depending on the nature of the goods or service. Understanding which VAT rate Ireland applies to a given transaction is essential for correct pricing, invoicing, and compliance. The rates below reflect the position for 2026, including the changes that took effect from 1 July 2026.</p>
+                </div>
+
+                <div class="guide-section">
+                    <h3>Standard VAT Rate in Ireland: 23%</h3>
+                    <p>The standard VAT rate in Ireland is 23%, and it is the default rate that applies to any supply not specifically assigned to a reduced, zero, or exempt category. This is the current VAT rate Ireland charges on the broadest range of goods and services in the economy.</p>
+                    <p>Items and services taxed at the 23% standard rate include:</p>
+                    <ul class="resources-list" style="margin-bottom:1rem;">
+                        <li><strong>Electronics</strong> — computers, phones, televisions, and household appliances</li>
+                        <li><strong>Furniture</strong> — sofas, tables, beds, and general home furnishings</li>
+                        <li><strong>Professional fees</strong> — legal, accountancy, consultancy, and most advisory services</li>
+                        <li><strong>Adult apparel</strong> — clothing and footwear for adults</li>
+                        <li><strong>Gasoline (petrol) and diesel</strong> — road fuels</li>
+                        <li>Alcohol, soft drinks, and bottled water</li>
+                        <li>Cosmetics, toiletries, and most non-essential consumer goods</li>
+                        <li>Motor vehicles and their parts</li>
+                    </ul>
+                    <p>If a business is uncertain which rate applies, the 23% standard rate is the fallback unless the supply is clearly listed elsewhere in Revenue's <a href="https://www.revenue.ie/en/vat/vat-rates/search-vat-rates/index.aspx" target="_blank" rel="noopener noreferrer">VAT rates database</a>. If your business turnover is nearing the mandatory limits, make sure to check our guide on the <a href="vat-registration-threshold-ireland.html">VAT Thresholds Ireland</a>.</p>
+                </div>
+
+                <div class="guide-section">
+                    <h3>Reduced VAT Rate: 13.5%</h3>
+                    <p>The reduced rate of VAT in Ireland is 13.5%, a middle tier that applies to a defined list of goods and services, many of them labour-intensive or connected to property and energy.</p>
+                    <p>The 13.5% reduced rate covers:</p>
+                    <ul class="resources-list" style="margin-bottom:1rem;">
+                        <li><strong>Building and construction works</strong> — the supply and installation of fixtures under a construction contract, along with general repair, maintenance, and renovation of property</li>
+                        <li><strong>Fuel and heating</strong> — heating oil, solid fuels such as coal and peat, and related heating supplies</li>
+                        <li><strong>Domestic energy</strong> — supplied outside the temporary 9% arrangement where applicable</li>
+                        <li><strong>Short-term tourist accommodation</strong> — hotels, guesthouses, B&Bs, and holiday lettings</li>
+                        <li>General services such as routine repair of movable goods, and certain agricultural and veterinary services</li>
+                    </ul>
+                    <p>Notably, hotel and short-term accommodation remains at 13.5% even after the July 2026 hospitality changes, so a hotel stay and a restaurant meal within the same hotel can now attract two different rates.</p>
+                </div>
+
+                <div class="guide-section">
+                    <h3>Second Reduced VAT Rate: 9%</h3>
+                    <p>The second reduced rate of 9% applies to a targeted group of goods and services. The most significant recent development is the permanent reduction, effective <strong>1 July 2026</strong>, of VAT on restaurant and catering services, hot takeaway food, and hairdressing services from 13.5% to 9%. This was announced in Budget 2026 to ease cost pressures in the hospitality and personal-services sectors and applies with no scheduled expiry date (domestic gas and electricity is also 9%, see our <a href="vat-on-electricity-ireland.html">VAT on Electricity Ireland</a> page).</p>
+                    <p>The 9% second reduced rate covers:</p>
+                    <ul class="resources-list" style="margin-bottom:1rem;">
+                        <li><strong>Restaurant dining, catering, and hot takeaway food</strong> (from 1 July 2026)</li>
+                        <li><strong>Hairdressing services</strong> (from 1 July 2026)</li>
+                        <li><strong>Newspapers and periodicals</strong></li>
+                        <li><strong>E-books and audiobooks</strong></li>
+                        <li><strong>Cinema, theatre, and certain live cultural admissions</strong></li>
+                        <li>Gas and electricity (extended to 31 December 2030)</li>
+                        <li>Sporting facilities, green fees, and gym or sports-club subscriptions</li>
+                        <li>The sale of completed apartments (8 October 2025 to 31 December 2030)</li>
+                    </ul>
+                    <p>Important exclusions apply: alcohol, soft drinks, and bottled water served alongside a meal remain at the 23% standard rate, and hotel accommodation stays at 13.5%. Where a single package combines items at different rates — for example, dinner with wine — the price must be fairly apportioned.</p>
+                </div>
+
+                <div class="guide-section">
+                    <h3>Livestock and Agricultural Flat Rate: 4.8%</h3>
+                    <p>Two distinct figures apply in the agricultural sector, and they are frequently confused.</p>
+                    <p>The <strong>4.8% super-reduced VAT rate</strong> is a genuine VAT rate that applies to the supply of livestock — live cattle, sheep, goats, pigs, deer, and horses normally intended for use in the preparation of foodstuffs or in agricultural production — by a VAT-registered business. This rate is long-standing and, unlike other rates, Ireland is not required to review it annually under the <a href="https://ec.europa.eu/taxation_customs/business/vat/what-is-vat_en" target="_blank" rel="noopener noreferrer">EU VAT Directive</a>.</p>
+                    <p>Separately, the <strong>flat-rate addition</strong> is part of the Flat-Rate Scheme for farmers, an administrative simplification for farmers who are not registered, and not required to register, for VAT. Rather than entering the VAT system, these unregistered farmers add and retain a percentage — the flat-rate addition — on the price of agricultural goods and services they supply to VAT-registered businesses such as marts, co-ops, and processors. This compensates them for the VAT they cannot reclaim on their farming inputs. The flat-rate addition is <strong>not a tax</strong>; it is an amount the farmer keeps. From <strong>1 January 2026</strong> the flat-rate addition fell from 5.1% to 4.5%, as announced in Budget 2026.</p>
+                    <p>Because the livestock rate (4.8%) and the flat-rate addition (4.5%) now differ, non-registered farmers selling livestock can face a small shortfall — a point of ongoing debate within the sector.</p>
+                </div>
+
+                <div class="guide-section">
+                    <h3>Zero Rate: 0%</h3>
+                    <p>Zero-rated goods are taxable supplies on which VAT is charged at 0%. This distinction matters: because they are still taxable (just at a 0% rate), businesses making zero-rated supplies can reclaim the VAT they incur on their own costs and inputs.</p>
+                    <p>Goods and services at the 0% zero rate include:</p>
+                    <ul class="resources-list" style="margin-bottom:1rem;">
+                        <li><strong>Basic foodstuffs</strong> — bread, milk, butter, tea, coffee, vegetables, and most staple groceries</li>
+                        <li><strong>Books and printed booklets</strong> (physical books; note e-books are 9%)</li>
+                        <li><strong>Oral medicines</strong> prescribed for human consumption</li>
+                        <li><strong>Children's clothing and footwear</strong> — sized for younger children</li>
+                        <li>Certain medical devices and aids for people with disabilities</li>
+                        <li>Exports of goods to outside the EU</li>
+                    </ul>
+                </div>
+
+                <div class="guide-section">
+                    <h3>VAT Exempt Goods & Services</h3>
+                    <p>VAT exemption is fundamentally different from zero-rating, and the distinction has real financial consequences. An <strong>exempt</strong> supply is outside the scope of VAT altogether: no VAT is charged to the customer, and — crucially — the business making the exempt supply generally <strong>cannot reclaim</strong> the VAT it pays on its own purchases and overheads. By contrast, a <strong>zero-rated</strong> business charges 0% but can still recover its input VAT. In short, zero-rating is favourable to the supplier; exemption is not.</p>
+                    <p>Common VAT-exempt goods and services in Ireland include:</p>
+                    <ul class="resources-list" style="margin-bottom:1rem;">
+                        <li><strong>Financial services</strong> — banking, lending, and most transactions in money</li>
+                        <li><strong>Insurance</strong> — insurance and reinsurance services</li>
+                        <li><strong>Education</strong> — recognised school and university education and certain vocational training</li>
+                        <li><strong>Medical services</strong> — professional medical care provided by doctors, dentists, and other registered health professionals</li>
+                        <li>Certain letting of residential property, betting and lotteries, and specified cultural and charitable activities</li>
+                    </ul>
+                    <p>Because exempt businesses absorb their input VAT as a cost, VAT recovery and partial-exemption calculations become important for organisations that make both taxable and exempt supplies.</p>
+                </div>
+
+                <div class="guide-section">
+                    <h3>VAT on Services in Ireland</h3>
+                    <p>The service VAT rate in Ireland depends on the nature of the service — most professional and consumer services fall under the 23% standard rate, while specific categories such as construction (13.5%), hairdressing (9% from July 2026), and education (exempt) follow their own rules. Beyond the rate itself, VAT on services in Ireland is heavily shaped by <strong>place of supply</strong> rules, which determine in which country the service is deemed to be supplied and therefore where VAT is due.</p>
+                    <p>For cross-border <strong>business-to-business (B2B)</strong> services, the general place-of-supply rule locates the supply where the customer is established. This triggers the <strong>reverse charge</strong> mechanism: instead of the supplier charging VAT, the business customer self-accounts for VAT in its own country, simultaneously declaring and (where entitled) reclaiming it on the same return. It is critical to verify the formatting of cross-border VAT numbers using our <a href="vat-checker-vies.html">VIES VAT Checker</a> before zero-rating supplies. This removes the need for foreign suppliers to register in the customer's country and is central to intra-EU trade in services.</p>
+                    <p><strong>Business-to-consumer (B2C)</strong> services follow different rules, often taxed where the supplier is established, with important exceptions for digital, telecommunications, and broadcasting services (taxed where the consumer is located) and services connected to land (taxed where the property is situated). Businesses trading services across borders should confirm the correct place-of-supply treatment before invoicing, as errors are a common source of assessments.</p>
+                </div>
+
+                <div class="guide-section">
+                    <h3>VAT on Food in Ireland</h3>
+                    <p>VAT on food in Ireland is one of the most intricate areas of the system, because the rate turns not just on what the food is, but on how and where it is sold. Three broad tiers operate at once:</p>
+                    <ul class="resources-list" style="margin-bottom:1rem;">
+                        <li><strong>Zero-rated (0%) — basic groceries.</strong> Most staple, uncooked, or cold food bought for home consumption is zero-rated: bread, milk, vegetables, tea, coffee, flour, and similar staples. This keeps essential grocery shopping free of VAT.</li>
+                        <li><strong>9% — restaurant, catering, and hot takeaway food.</strong> From 1 July 2026, food supplied in the course of a restaurant, catering, or hot takeaway service is charged at 9%. The defining factor is that the food is prepared and supplied for immediate consumption as a service, rather than sold as a cold grocery item.</li>
+                        <li><strong>23% — alcohol, soft drinks, and confectionery.</strong> Alcohol, soft drinks, bottled water, and many confectionery and snack items are always standard-rated at 23%, even when served with an otherwise 9% meal.</li>
+                    </ul>
+                    <p>The practical difficulty arises at the boundaries. A cold sandwich taken away may be zero-rated, while the same sandwich heated becomes a 9% hot takeaway supply. A meal deal combining a 9% hot food item with a 23% soft drink is a mixed supply requiring apportionment. Food businesses need to map each product line carefully to the correct rate to stay compliant. Non-EU visitors who purchase take-home items may reclaim this VAT via the <a href="vat-refund-ireland.html">VAT Refund Ireland</a> Retail Export Scheme.</p>
+                </div>
+
+                <!-- FAQ Section -->
+                <div class="guide-section">
+                    <h3>Frequently Asked Questions</h3>
+                    <div class="accordion">
+                        <div class="accordion-item">
+                            <button class="accordion-header">
+                                <span>What is the standard VAT rate in Ireland?</span>
+                                <svg class="accordion-arrow" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><polyline points="6 9 12 15 18 9"></polyline></svg>
+                            </button>
+                            <div class="accordion-content">
+                                <p>The standard VAT rate in Ireland is 23%. It is the default rate applied to most goods and services — including electronics, furniture, professional services, adult clothing, and fuel — unless the supply specifically qualifies for a reduced rate, the zero rate, or an exemption.</p>
+                            </div>
+                        </div>
+
+                        <div class="accordion-item">
+                            <button class="accordion-header">
+                                <span>What percentage is VAT in Ireland?</span>
+                                <svg class="accordion-arrow" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><polyline points="6 9 12 15 18 9"></polyline></svg>
+                            </button>
+                            <div class="accordion-content">
+                                <p>VAT in Ireland is charged at several percentages depending on the item: a standard rate of 23%, a reduced rate of 13.5%, a second reduced rate of 9%, a livestock rate of 4.8%, and a zero rate of 0%. Some supplies are exempt entirely.</p>
+                            </div>
+                        </div>
+
+                        <div class="accordion-item">
+                            <button class="accordion-header">
+                                <span>How much is VAT in Ireland?</span>
+                                <svg class="accordion-arrow" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><polyline points="6 9 12 15 18 9"></polyline></svg>
+                            </button>
+                            <div class="accordion-content">
+                                <p>For most goods and services, VAT in Ireland is 23%. Reduced rates of 13.5% and 9% apply to specific categories such as construction, energy, hospitality, and hairdressing, while essentials like basic food, children's clothing, and physical books are zero-rated at 0%.</p>
+                            </div>
+                        </div>
+
+                        <div class="accordion-item">
+                            <button class="accordion-header">
+                                <span>Are books exempt from VAT in Ireland?</span>
+                                <svg class="accordion-arrow" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><polyline points="6 9 12 15 18 9"></polyline></svg>
+                            </button>
+                            <div class="accordion-content">
+                                <p>Physical books are not exempt but zero-rated at 0% VAT in Ireland, meaning no VAT is added while sellers can still reclaim input VAT. Note that e-books and audiobooks are treated differently and are charged at the 9% second reduced rate rather than zero-rated.</p>
+                            </div>
+                        </div>
+
+                        <div class="accordion-item">
+                            <button class="accordion-header">
+                                <span>What is the difference between zero-rated and exempt VAT?</span>
+                                <svg class="accordion-arrow" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><polyline points="6 9 12 15 18 9"></polyline></svg>
+                            </button>
+                            <div class="accordion-content">
+                                <p>Zero-rated supplies are taxable at 0%, so no VAT is charged but the business can still reclaim VAT on its costs. Exempt supplies fall outside VAT entirely: no VAT is charged, but the business generally cannot recover the VAT it pays on its own purchases.</p>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </section>
+    </main>
+
+    <footer class="app-footer">
+        <div class="container">
+            <div class="footer-grid">
+                <div class="footer-col">
+                    <h4>Information</h4>
+                    <ul class="footer-links">
+                        <li><a href="about-us.html">About Us</a></li>
+                        <li><a href="terms-conditions.html">Terms & Conditions</a></li>
+                        <li><a href="privacy-policy.html">Privacy Policy</a></li>
+                    </ul>
+                </div>
+                <div class="footer-col">
+                    <h4>Sitemaps</h4>
+                    <ul class="footer-links">
+                        <li><a href="sitemap.html">HTML Sitemap</a></li>
+                        <li><a href="sitemap.xml" target="_blank">XML Sitemap</a></li>
+                    </ul>
+                </div>
+                <div class="footer-col">
+                    <h4>Featured Guides</h4>
+                    <ul class="footer-links">
+                        <li><a href="vat-rates-ireland.html">VAT Rates Ireland</a></li>
+                        <li><a href="vat-registration-threshold-ireland.html">VAT Thresholds Ireland</a></li>
+                        <li><a href="vat-on-electricity-ireland.html">VAT on Electricity</a></li>
+                        <li><a href="vat-checker-vies.html">VIES VAT Checker</a></li>
+                        <li><a href="vat-refund-ireland.html">Tourist VAT Refunds</a></li>
+                    </ul>
+                </div>
+            </div>
+            <div class="footer-bottom">
+                <p>&copy; 2026 calculate-vat.com. All rights reserved.</p>
+                <p class="disclaimer">Disclaimer: While we strive to ensure absolute mathematical and tax accuracy, these calculations are for informational purposes. Please consult an accountant or tax professional before making financial decisions.</p>
+                <p class="footer-author">Made with ❤️ by <a href="https://affanahmed.de" target="_blank" rel="noopener noreferrer">Affan Ahmed</a></p>
+            </div>
+        </div>
+    </footer>
+
+    <!-- App Logic script -->
+    <script src="app.js"></script>
+</body>
+</html>

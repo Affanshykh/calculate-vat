@@ -1,0 +1,16 @@
+{
+  "name": "calculate-vat.com",
+  "version": "1.0.0",
+  "description": "Ireland & UK VAT Calculator with detailed guides, charts, and calculation history.",
+  "scripts": {
+    "dev": "npx -y http-server . -p 3000 -o"
+  },
+  "keywords": [
+    "vat",
+    "calculator",
+    "ireland",
+    "uk"
+  ],
+  "author": "",
+  "license": "ISC"
+}

@@ -1,0 +1,269 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>VAT Registration Threshold Ireland 2026 | €85k / €42.5k</title>
+    <meta name="description" content="Ireland's VAT thresholds: €85,000 goods, €42,500 services. Learn when to register, sole trader rules & how to apply via ROS. Track your turnover free.">
+    <meta name="keywords" content="vat registered threshold, vat registration threshold ireland, what is the vat threshold in ireland, vat threshold ireland sole trader, vat registration ireland sole trader, register for vat ireland, vat registration limit, vat reg threshold, vat threshold ireland, register for vat, vat registration, vat registration ireland">
+    <link rel="canonical" href="https://calculate-vat.com/vat-registration-threshold-ireland.html">
+    
+    <!-- Google Fonts -->
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700&family=Outfit:wght@400;500;600;700;800&display=swap" rel="stylesheet">
+    
+    <!-- Favicon -->
+    <link rel="icon" type="image/svg+xml" href="favicon.svg">
+    
+    <!-- CSS stylesheet -->
+    <link rel="stylesheet" href="styles.css">
+</head>
+<body class="light-theme country-ie" data-page-type="threshold-ie">
+    <header class="app-header">
+        <div class="container header-container">
+            <a href="index.html" class="logo">
+                <svg class="logo-svg" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round">
+                    <rect x="3" y="3" width="18" height="18" rx="2" ry="2"></rect>
+                    <line x1="9" y1="9" x2="15" y2="15"></line>
+                    <circle cx="15" cy="9" r="1" fill="currentColor"></circle>
+                    <circle cx="9" cy="15" r="1" fill="currentColor"></circle>
+                </svg>
+                <span class="logo-text">Calculate<span>VAT</span></span>
+            </a>
+            <nav class="app-nav">
+                <a href="index.html" class="nav-link">Home</a>
+                <a href="vat-rates-ireland.html" class="nav-link">VAT Rates IE</a>
+                <a href="vat-registration-threshold-ireland.html" class="nav-link">Thresholds</a>
+                <a href="vat-on-electricity-ireland.html" class="nav-link">Electricity VAT</a>
+                <a href="vat-checker-vies.html" class="nav-link">VIES Checker</a>
+                <a href="vat-refund-ireland.html" class="nav-link">Tourist Refunds</a>
+            </nav>
+        </div>
+    </header>
+
+    <main class="container">
+        <!-- Hero and Turnover Progress Tracker -->
+        <section class="calculator-hero">
+            <div class="hero-text">
+                <h1>VAT Registered Threshold Ireland</h1>
+                <p class="subtitle">Value-Added Tax registration in Ireland is triggered by turnover, not profit. Monitor your rolling 12-month turnover using our interactive tracker below to check if you must register.</p>
+            </div>
+
+            <div class="calculator-container">
+                <!-- Turnover input card -->
+                <div class="calculator-card">
+                    <h3 class="results-title">Annual Turnover Inputs</h3>
+                    
+                    <div class="form-group">
+                        <label for="threshold-type">Type of Business Supply</label>
+                        <div class="select-wrapper">
+                            <select id="threshold-type">
+                                <option value="services">Services (Threshold: €42,500)</option>
+                                <option value="goods">Goods / Products (Threshold: €85,000)</option>
+                            </select>
+                        </div>
+                    </div>
+
+                    <div class="form-group">
+                        <label for="threshold-turnover">Rolling 12-Month Turnover</label>
+                        <div class="input-wrapper">
+                            <span class="currency-symbol">€</span>
+                            <input type="number" id="threshold-turnover" value="30000" step="1000" min="0" placeholder="0">
+                        </div>
+                    </div>
+                </div>
+
+                <!-- Progress display card -->
+                <div class="tracker-card">
+                    <h3 class="results-title" style="margin-bottom:0.5rem;">Registration Progress</h3>
+                    
+                    <div class="progress-container">
+                        <div class="progress-bar-bg">
+                            <div class="progress-bar-fill" id="tracker-progress-fill"></div>
+                        </div>
+                        <div class="progress-stats">
+                            <span>Status: <strong id="tracker-percentage">0%</strong></span>
+                            <span>Mandatory Limit</span>
+                        </div>
+                    </div>
+
+                    <div class="advice-box" id="tracker-advice">
+                        <!-- Populated dynamically via JS -->
+                    </div>
+
+                    <p id="tracker-stats-label" style="font-size:0.8rem; text-align:center; color:var(--text-muted); margin-top:0.5rem;">
+                        <!-- Stats summary injected here -->
+                    </p>
+                </div>
+            </div>
+        </section>
+
+        <!-- Curated Threshold Content -->
+        <section class="vat-guide card">
+            <h2>VAT Registration Limits Guide</h2>
+            
+            <div class="guide-content">
+                <div class="guide-section">
+                    <p>Value-Added Tax registration in Ireland is triggered by turnover, not profit, and the point at which registration becomes compulsory is governed by two national thresholds set by the Minister for Finance and administered by the <a href="https://www.revenue.ie" target="_blank" rel="noopener noreferrer">Revenue Commissioners</a>. Once a business's taxable turnover reaches — or is expected to reach — the relevant VAT registered threshold, it must register, begin charging VAT on its sales, and file regular returns. Understanding where your business stands relative to these limits is one of the most important compliance checks any Irish trader can make, because Revenue can pursue VAT you should have charged even if you never collected it from customers (calculate your potential additions or removals using our general <a href="index.html">VAT Calculator</a>). This guide sets out the 2026 thresholds, how they apply to sole traders and companies, when voluntary registration makes sense, and how to register through Revenue's online system.</p>
+                </div>
+
+                <div class="guide-section">
+                    <h3>What is the VAT Threshold in Ireland?</h3>
+                    <p>Ireland does not operate a single VAT registration limit — it has two, depending on what the business supplies. For 2026 the VAT registration thresholds in Ireland are:</p>
+                    <ul class="resources-list" style="margin-bottom:1rem;">
+                        <li><strong>€85,000</strong> for businesses supplying <strong>goods</strong></li>
+                        <li><strong>€42,500</strong> for businesses supplying <strong>services</strong></li>
+                    </ul>
+                    <p>These figures apply to <strong>taxable turnover in any continuous 12-month period</strong> — a rolling window, not your calendar or accounting year. The obligation to register arises the moment that rolling total exceeds the relevant threshold, or as soon as you have reasonable grounds to believe it will exceed the threshold within the next 12 months. This forward-looking "likely to exceed" test matters: if you sign a contract that will clearly push you over the limit, you should register straight away rather than waiting to physically cross it.</p>
+                    <p>A few important refinements apply:</p>
+                    <ul class="resources-list" style="margin-bottom:1rem;">
+                        <li><strong>Mixed suppliers.</strong> A business that supplies both goods and services only qualifies for the higher €85,000 goods threshold if at least <strong>90%</strong> of its turnover comes from goods. If less than 90% is goods, the lower €42,500 services threshold applies to all of its turnover.</li>
+                        <li><strong>Non-established businesses.</strong> Foreign businesses with no establishment in Ireland face a <strong>nil threshold</strong> and must register before making their first taxable supply in the State.</li>
+                        <li><strong>Recent change.</strong> These thresholds have been in force since 1 January 2025, when they were raised from €80,000 (goods) and €40,000 (services). Older guides quoting €75,000/€37,500 are out of date.</li>
+                    </ul>
+                </div>
+
+                <div class="guide-section">
+                    <h3>VAT Registration for Sole Traders in Ireland</h3>
+                    <p>The VAT threshold for sole traders in Ireland is exactly the same as for companies: <strong>€85,000 for goods and €42,500 for services</strong>. VAT registration is tied to the nature and level of the business activity, not to the legal structure, so operating as a sole trader does not give you a higher or lower limit than an incorporated company doing the same work.</p>
+                    <p>For sole traders, the practical points to watch are:</p>
+                    <ul class="resources-list" style="margin-bottom:1rem;">
+                        <li><strong>The services threshold is low and easy to cross.</strong> Many freelancers, consultants, tradespeople, and professionals providing services reach €42,500 within their first year of trading, sometimes on just a handful of contracts. Regular turnover checks are essential.</li>
+                        <li><strong>Rolling 12-month monitoring.</strong> Because the test is a rolling period, a single large invoice or a busy quarter can tip you over. Waiting for year-end accounts is the most common and costly mistake.</li>
+                        <li><strong>The €41,000 EU acquisitions rule.</strong> A sole trader acquiring more than €41,000 of goods from other EU member states in a 12-month period must register regardless of the sales thresholds, and receiving certain B2B services from abroad requires self-accounting under the reverse charge with no threshold at all (verify international prefixes via our <a href="vat-checker-vies.html">VIES VAT Checker</a>).</li>
+                    </ul>
+                    <p>The key difference from a corporate entity is not the VAT threshold itself but the surrounding tax profile: a sole trader registers under their own PPSN-linked tax registration and reports VAT alongside their personal income tax obligations, whereas a company registers as a separate legal person. The VAT registration form also differs — sole traders and partnerships use <strong>Form TR1</strong>, while companies use <strong>Form TR2</strong>.</p>
+                </div>
+
+                <div class="guide-section">
+                    <h3>Voluntary VAT Registration</h3>
+                    <p>You do not have to wait until you hit the threshold to register. Any business trading below the limit can opt to <strong>register for VAT voluntarily</strong>, and for some businesses this is the right decision from day one.</p>
+                    <p><strong>Benefits of voluntary registration:</strong></p>
+                    <ul class="resources-list" style="margin-bottom:1rem;">
+                        <li><strong>Reclaiming input VAT on start-up costs.</strong> Registering early lets you recover the VAT you pay on equipment, fit-out, stock, software, and professional set-up costs — a meaningful cash-flow boost for start-ups with high initial investment.</li>
+                        <li><strong>Ongoing input VAT recovery.</strong> You can continue reclaiming VAT on business purchases and overheads going forward.</li>
+                        <li><strong>Credibility and B2B fit.</strong> If your customers are themselves VAT-registered businesses, they reclaim the VAT you charge, so registering costs them nothing while making your business look established. For B2B service providers, voluntary registration from launch is often the sensible default.</li>
+                    </ul>
+                    <p><strong>Drawbacks to weigh up:</strong></p>
+                    <ul class="resources-list" style="margin-bottom:1rem;">
+                        <li><strong>You must charge VAT to your customers.</strong> If you sell mainly to consumers or other non-registered customers who cannot reclaim it, adding the standard 23% rate (or reduced rates, see our <a href="vat-rates-ireland.html">VAT Rates Ireland</a> guide) either raises your prices or squeezes your margin.</li>
+                        <li><strong>Compliance costs and admin.</strong> Once registered you must file periodic VAT returns (typically bi-monthly), keep VAT-compliant records, and issue proper VAT invoices — an ongoing administrative burden.</li>
+                        <li><strong>Cash-flow timing.</strong> You collect VAT on sales and must remit it to Revenue on schedule, which requires disciplined bookkeeping.</li>
+                    </ul>
+                </div>
+
+                <div class="guide-section">
+                    <h3>How to Register for VAT in Ireland</h3>
+                    <p>VAT registration in Ireland is handled electronically through the official <a href="https://www.ros.ie" target="_blank" rel="noopener noreferrer">Revenue Online Service (ROS)</a> portal. The process is straightforward where no queries arise:</p>
+                    <ol class="steps-list" style="margin-bottom:1rem;">
+                        <li><strong>Set up ROS access.</strong> Register for a ROS account if you do not already have one. You will need your tax registration details; sole traders use their PPSN-linked registration and companies their CRO/tax number.</li>
+                        <li><strong>Complete the correct form.</strong> Use <strong>Form TR1</strong> if you are a sole trader, partnership, or individual, or <strong>Form TR2</strong> if you are registering a company. These forms cover registration for VAT in a single application.</li>
+                        <li><strong>Provide your business details.</strong> Supply information on the nature of your trade, your expected turnover, business address, bank details for refunds, and the date from which you wish to be registered.</li>
+                        <li><strong>Choose your registration basis.</strong> Indicate whether you are registering because you have exceeded or expect to exceed a threshold, or on a voluntary basis, and select domestic-only or intra-EU (Community) trading status.</li>
+                        <li><strong>Submit through ROS and await review.</strong> Revenue reviews the application and may raise follow-up questions to confirm you are carrying on a genuine taxable business in the State.</li>
+                        <li><strong>Receive your VAT number.</strong> Once approved you are issued an Irish VAT number (beginning with "IE"), and you can begin charging and reclaiming VAT from your effective registration date.</li>
+                    </ol>
+                    <p>Keep evidence of your trading activity ready, as Revenue increasingly seeks documentation to support registration applications and guard against fraudulent claims.</p>
+                </div>
+
+                <!-- FAQ Section -->
+                <div class="guide-section">
+                    <h3>Frequently Asked Questions</h3>
+                    <div class="accordion">
+                        <div class="accordion-item">
+                            <button class="accordion-header">
+                                <span>What is the VAT threshold in Ireland for sole traders?</span>
+                                <svg class="accordion-arrow" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><polyline points="6 9 12 15 18 9"></polyline></svg>
+                            </button>
+                            <div class="accordion-content">
+                                <p>The VAT threshold for sole traders in Ireland is €85,000 for supplying goods and €42,500 for supplying services in any rolling 12-month period. These are the same limits that apply to companies — registration depends on turnover and activity, not on business structure. Sole traders register using Form TR1.</p>
+                            </div>
+                        </div>
+
+                        <div class="accordion-item">
+                            <button class="accordion-header">
+                                <span>What is the VAT registration limit for goods?</span>
+                                <svg class="accordion-arrow" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><polyline points="6 9 12 15 18 9"></polyline></svg>
+                            </button>
+                            <div class="accordion-content">
+                                <p>The VAT registration limit for goods in Ireland is €85,000 of taxable turnover in any continuous 12-month period. If a business supplies both goods and services, it only gets this higher goods threshold when at least 90% of its turnover comes from goods; otherwise the €42,500 services limit applies.</p>
+                            </div>
+                        </div>
+
+                        <div class="accordion-item">
+                            <button class="accordion-header">
+                                <span>When do you have to register for VAT in Ireland?</span>
+                                <svg class="accordion-arrow" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><polyline points="6 9 12 15 18 9"></polyline></svg>
+                            </button>
+                            <div class="accordion-content">
+                                <p>You must register for VAT once your taxable turnover exceeds, or is likely to exceed, €85,000 for goods or €42,500 for services in any rolling 12-month period. The obligation is forward-looking, so you should register as soon as you reasonably expect to cross the relevant threshold, not after year-end.</p>
+                            </div>
+                        </div>
+
+                        <div class="accordion-item">
+                            <button class="accordion-header">
+                                <span>Can I register for VAT voluntarily?</span>
+                                <svg class="accordion-arrow" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><polyline points="6 9 12 15 18 9"></polyline></svg>
+                            </button>
+                            <div class="accordion-content">
+                                <p>Yes. Businesses trading below the thresholds can register for VAT voluntarily. This is often worthwhile for B2B businesses or start-ups with significant input VAT, as it lets you reclaim VAT on equipment and set-up costs. The trade-off is charging VAT to customers and taking on ongoing filing and compliance obligations.</p>
+                            </div>
+                        </div>
+
+                        <div class="accordion-item">
+                            <button class="accordion-header">
+                                <span>How long does Irish VAT registration take?</span>
+                                <svg class="accordion-arrow" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><polyline points="6 9 12 15 18 9"></polyline></svg>
+                            </button>
+                            <div class="accordion-content">
+                                <p>Irish VAT registration typically takes around 28 working days where the application is complete and Revenue raises no queries. If Revenue seeks additional information to verify your trading activity, the process can take longer, so applying early and providing supporting documentation upfront helps avoid delays.</p>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </section>
+    </main>
+
+    <footer class="app-footer">
+        <div class="container">
+            <div class="footer-grid">
+                <div class="footer-col">
+                    <h4>Information</h4>
+                    <ul class="footer-links">
+                        <li><a href="about-us.html">About Us</a></li>
+                        <li><a href="terms-conditions.html">Terms & Conditions</a></li>
+                        <li><a href="privacy-policy.html">Privacy Policy</a></li>
+                    </ul>
+                </div>
+                <div class="footer-col">
+                    <h4>Sitemaps</h4>
+                    <ul class="footer-links">
+                        <li><a href="sitemap.html">HTML Sitemap</a></li>
+                        <li><a href="sitemap.xml" target="_blank">XML Sitemap</a></li>
+                    </ul>
+                </div>
+                <div class="footer-col">
+                    <h4>Featured Guides</h4>
+                    <ul class="footer-links">
+                        <li><a href="vat-rates-ireland.html">VAT Rates Ireland</a></li>
+                        <li><a href="vat-registration-threshold-ireland.html">VAT Thresholds Ireland</a></li>
+                        <li><a href="vat-on-electricity-ireland.html">VAT on Electricity</a></li>
+                        <li><a href="vat-checker-vies.html">VIES VAT Checker</a></li>
+                        <li><a href="vat-refund-ireland.html">Tourist VAT Refunds</a></li>
+                    </ul>
+                </div>
+            </div>
+            <div class="footer-bottom">
+                <p>&copy; 2026 calculate-vat.com. All rights reserved.</p>
+                <p class="disclaimer">Disclaimer: While we strive to ensure absolute mathematical and tax accuracy, these calculations are for informational purposes. Please consult an accountant or tax professional before making financial decisions.</p>
+                <p class="footer-author">Made with ❤️ by <a href="https://affanahmed.de" target="_blank" rel="noopener noreferrer">Affan Ahmed</a></p>
+            </div>
+        </div>
+    </footer>
+
+    <!-- App Logic script -->
+    <script src="app.js"></script>
+</body>
+</html>

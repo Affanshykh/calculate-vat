@@ -1,0 +1,447 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Ireland & UK VAT Calculator | Add or Remove VAT Free</title>
+    <meta name="description" content="Free online VAT calculator for Ireland & the UK. Add VAT, remove VAT or calculate backwards at 23%, 13.5%, 9% & 20%. Instant, accurate results.">
+    <meta name="keywords" content="vat calculator, vat calculator ireland, remove vat, net of vat, add vat ireland, online vat calculator ireland, 13.5 vat calculator ireland, irish vat calculator, uk vat calculator, vat calculator northern ireland, how to calculate vat backwards, reverse vat calculator ireland, ex vat calculator, price excluding vat">
+    <link rel="canonical" href="https://calculate-vat.com/">
+    
+    <!-- Google Fonts -->
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700&family=Outfit:wght@400;500;600;700;800&display=swap" rel="stylesheet">
+    
+    <!-- Favicon -->
+    <link rel="icon" type="image/svg+xml" href="favicon.svg">
+    
+    <!-- CSS stylesheet -->
+    <link rel="stylesheet" href="styles.css">
+    
+    <!-- Structured Data (JSON-LD) for SEO -->
+    <script type="application/ld+json">
+    {
+      "@context": "https://schema.org",
+      "@type": "FinancialCalculator",
+      "name": "Ireland & UK VAT Calculator",
+      "description": "An interactive tool to calculate VAT additions and removals using current Irish and UK VAT rates.",
+      "url": "https://calculate-vat.com/",
+      "category": "Tax Calculator",
+      "offers": {
+        "@type": "Offer",
+        "price": "0.00",
+        "priceCurrency": "EUR"
+      }
+    }
+    </script>
+</head>
+<body class="light-theme">
+    <header class="app-header">
+        <div class="container header-container">
+            <a href="index.html" class="logo">
+                <svg class="logo-svg" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round">
+                    <rect x="3" y="3" width="18" height="18" rx="2" ry="2"></rect>
+                    <line x1="9" y1="9" x2="15" y2="15"></line>
+                    <circle cx="15" cy="9" r="1" fill="currentColor"></circle>
+                    <circle cx="9" cy="15" r="1" fill="currentColor"></circle>
+                </svg>
+                <span class="logo-text">Calculate<span>VAT</span></span>
+            </a>
+            <nav class="app-nav">
+                <a href="index.html" class="nav-link">Home</a>
+                <a href="vat-rates-ireland.html" class="nav-link">VAT Rates IE</a>
+                <a href="vat-registration-threshold-ireland.html" class="nav-link">Thresholds</a>
+                <a href="vat-on-electricity-ireland.html" class="nav-link">Electricity VAT</a>
+                <a href="vat-checker-vies.html" class="nav-link">VIES Checker</a>
+                <a href="vat-refund-ireland.html" class="nav-link">Tourist Refunds</a>
+            </nav>
+        </div>
+    </header>
+
+    <main class="container">
+        <!-- Main Calculator Section -->
+        <section class="calculator-hero">
+            <div class="hero-text">
+                <h1>Ireland & UK VAT Calculator</h1>
+                <p class="subtitle">Our free online VAT calculator lets you add VAT, remove VAT, and calculate VAT backwards for both Ireland and the UK in seconds. Whether you need a gross figure with tax included or the net of VAT amount stripped out of a total, this Irish VAT calculator and VAT calculator UK tool handles every rate from 23% down to 0%. Just pick your country, choose a mode, and enter your amount.</p>
+            </div>
+
+            <div class="calculator-container">
+                <!-- Calculator Inputs -->
+                <div class="calculator-card">
+                    <!-- Country Tab Selector -->
+                    <div class="country-selector">
+                        <button type="button" class="country-tab active" id="tab-ie" data-country="IE">
+                            Ireland (EUR €)
+                        </button>
+                        <button type="button" class="country-tab" id="tab-gb" data-country="GB">
+                            United Kingdom (GBP £)
+                        </button>
+                    </div>
+
+                    <!-- Mode Selector (Add / Remove) -->
+                    <div class="mode-selector">
+                        <label class="mode-option">
+                            <input type="radio" name="calc-mode" value="add" checked>
+                            <span class="mode-box">
+                                <span class="mode-icon">+</span>
+                                <span class="mode-label">Add VAT <small>(Net to Gross)</small></span>
+                            </span>
+                        </label>
+                        <label class="mode-option">
+                            <input type="radio" name="calc-mode" value="remove">
+                            <span class="mode-box">
+                                <span class="mode-icon">−</span>
+                                <span class="mode-label">Remove VAT <small>(Calculate Backwards)</small></span>
+                            </span>
+                        </label>
+                    </div>
+
+                    <!-- Input Amount -->
+                    <div class="form-group">
+                        <label for="amount-input" id="amount-label">Amount (Net / Ex. VAT)</label>
+                        <div class="input-wrapper">
+                            <span class="currency-symbol" id="curr-symbol">€</span>
+                            <input type="number" id="amount-input" value="100" step="any" min="0" placeholder="0.00">
+                        </div>
+                    </div>
+
+                    <!-- VAT Rates Presets -->
+                    <div class="form-group">
+                        <label>VAT Rate (%)</label>
+                        <div class="rate-presets" id="rate-presets-container">
+                            <!-- Populated dynamically via JS -->
+                        </div>
+                        
+                        <!-- Custom Rate Box -->
+                        <div class="custom-rate-wrapper hidden" id="custom-rate-group">
+                            <label for="custom-rate" class="sr-only">Enter Custom VAT Rate</label>
+                            <div class="input-wrapper custom-rate-input">
+                                <input type="number" id="custom-rate" value="23" step="0.1" min="0" max="100">
+                                <span class="rate-suffix">%</span>
+                            </div>
+                        </div>
+                    </div>
+
+                    <!-- Quick Lookup Buttons (SEO Boost & convenience) -->
+                    <div class="quick-lookups">
+                        <span class="quick-title">Quick Lookups:</span>
+                        <div class="quick-buttons" id="quick-buttons-container">
+                            <!-- Populated dynamically -->
+                        </div>
+                    </div>
+                </div>
+
+                <!-- Calculator Outputs & Visual Breakdown -->
+                <div class="results-card">
+                    <h3 class="results-title">Calculation Results</h3>
+                    
+                    <div class="results-grid">
+                        <!-- Net Amount Result -->
+                        <div class="result-item" id="net-result-box">
+                            <div class="result-meta">
+                                <span class="result-label">Net Amount <span class="subtext">(Excl. VAT)</span></span>
+                                <button class="copy-btn" data-copy="net" aria-label="Copy Net Amount">
+                                    <svg class="copy-icon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><rect x="9" y="9" width="13" height="13" rx="2" ry="2"></rect><path d="M5 15H4a2 2 0 0 1-2-2V4a2 2 0 0 1 2-2h9a2 2 0 0 1 2 2v1"></path></svg>
+                                    <span class="tooltip">Copied!</span>
+                                </button>
+                            </div>
+                            <div class="result-value" id="net-value">€100.00</div>
+                        </div>
+
+                        <!-- VAT Amount Result -->
+                        <div class="result-item highlight" id="vat-result-box">
+                            <div class="result-meta">
+                                <span class="result-label">VAT Amount <span class="subtext" id="vat-applied-label">(23% VAT)</span></span>
+                                <button class="copy-btn" data-copy="vat" aria-label="Copy VAT Amount">
+                                    <svg class="copy-icon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><rect x="9" y="9" width="13" height="13" rx="2" ry="2"></rect><path d="M5 15H4a2 2 0 0 1-2-2V4a2 2 0 0 1 2-2h9a2 2 0 0 1 2 2v1"></path></svg>
+                                    <span class="tooltip">Copied!</span>
+                                </button>
+                            </div>
+                            <div class="result-value text-accent" id="vat-value">€23.00</div>
+                        </div>
+
+                        <!-- Gross Amount Result -->
+                        <div class="result-item" id="gross-result-box">
+                            <div class="result-meta">
+                                <span class="result-label">Gross Amount <span class="subtext">(Incl. VAT)</span></span>
+                                <button class="copy-btn" data-copy="gross" aria-label="Copy Gross Amount">
+                                    <svg class="copy-icon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><rect x="9" y="9" width="13" height="13" rx="2" ry="2"></rect><path d="M5 15H4a2 2 0 0 1-2-2V4a2 2 0 0 1 2-2h9a2 2 0 0 1 2 2v1"></path></svg>
+                                    <span class="tooltip">Copied!</span>
+                                </button>
+                            </div>
+                            <div class="result-value" id="gross-value">€123.00</div>
+                        </div>
+                    </div>
+
+                    <!-- Interactive SVG Ring Chart -->
+                    <div class="chart-container">
+                        <svg class="donut-chart" viewBox="0 0 200 200">
+                            <!-- Background Track -->
+                            <circle class="donut-track" cx="100" cy="100" r="70" fill="none" stroke-width="20"></circle>
+                            <!-- Net Circle -->
+                            <circle class="donut-segment donut-net" id="chart-net-seg" cx="100" cy="100" r="70" fill="none" stroke-width="20"></circle>
+                            <!-- VAT Circle -->
+                            <circle class="donut-segment donut-vat" id="chart-vat-seg" cx="100" cy="100" r="70" fill="none" stroke-width="20"></circle>
+                            
+                            <!-- Inside Text -->
+                            <g class="donut-text-group">
+                                <text class="donut-percent" x="100" y="95" text-anchor="middle" id="chart-vat-percentage">18.7%</text>
+                                <text class="donut-sub" x="100" y="120" text-anchor="middle">VAT Portion</text>
+                            </g>
+                        </svg>
+                        
+                        <div class="chart-legend">
+                            <div class="legend-item">
+                                <span class="legend-color legend-net-color"></span>
+                                <span>Net: <strong id="legend-net-pct">81.3%</strong></span>
+                            </div>
+                            <div class="legend-item">
+                                <span class="legend-color legend-vat-color"></span>
+                                <span>VAT: <strong id="legend-vat-pct">18.7%</strong></span>
+                            </div>
+                        </div>
+                    </div>
+
+                    <!-- Calculator Actions (Save & Share) -->
+                    <div class="calculator-actions">
+                        <button class="save-history-btn" id="save-history">
+                            <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M19 21H5a2 2 0 0 1-2-2V5a2 2 0 0 1 2-2h11l5 5v11a2 2 0 0 1-2 2z"></path><polyline points="17 21 17 13 7 13 7 21"></polyline><polyline points="7 3 7 8 15 8"></polyline></svg>
+                            Save
+                        </button>
+                        <button class="share-btn" id="share-calculation">
+                            <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M4 12v8a2 2 0 0 0 2 2h12a2 2 0 0 0 2-2v-8"></path><polyline points="16 6 12 2 8 6"></polyline><line x1="12" y1="2" x2="12" y2="15"></line></svg>
+                            Share
+                            <span class="tooltip">Link Copied!</span>
+                        </button>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <!-- Calculation History -->
+        <section class="history-section card">
+            <div class="history-header">
+                <h2>Calculation History</h2>
+                <div class="history-actions" style="display: flex; gap: 0.5rem;">
+                    <button class="export-history-btn" id="export-history">Export CSV</button>
+                    <button class="clear-history-btn" id="clear-history">Clear All</button>
+                </div>
+            </div>
+            <div class="history-list-wrapper">
+                <div class="history-empty" id="history-empty">
+                    <p>No calculations saved yet. Adjust your values and click "Save Calculation".</p>
+                </div>
+                <div class="table-responsive">
+                    <table class="history-table hidden" id="history-table">
+                        <thead>
+                            <tr>
+                                <th>Country</th>
+                                <th>Mode</th>
+                                <th>Ex. VAT (Net)</th>
+                                <th>VAT Rate</th>
+                                <th>VAT Amount</th>
+                                <th>Inc. VAT (Gross)</th>
+                                <th>Actions</th>
+                            </tr>
+                        </thead>
+                        <tbody id="history-body">
+                            <!-- Table rows injected via JS -->
+                        </tbody>
+                    </table>
+                </div>
+            </div>
+        </section>
+
+        <!-- Dynamic Information Snippets -->
+        <div class="formula-info-grid">
+            <section class="formula-card card">
+                <h2>Add VAT</h2>
+                <p>Adding VAT means applying the tax on top of a net (ex VAT) price to find the gross, tax-inclusive total a customer pays. The formula is:</p>
+                <div class="formula-box">
+                    <div class="formula-label">Add VAT Formula</div>
+                    <code class="formula-code">Gross = Net × (1 + Rate/100)</code>
+                </div>
+                <div class="example-box">
+                    <strong>Example (23% VAT in Ireland):</strong>
+                    <p>For example, to add 23% VAT to a net price of €100, multiply €100 by 1.23. The result is €123.00 gross, made up of €100 net plus €23 in VAT. This is the standard calculation any business uses to display tax-inclusive prices.</p>
+                </div>
+            </section>
+
+            <section class="formula-card card">
+                <h2>Remove VAT</h2>
+                <p>Removing VAT (also called calculating backwards) means working out the original net, price-excluding-VAT figure from a gross total that already includes tax. A common mistake is to simply subtract 23% from the gross price, but this gives the wrong answer, because the 23% was originally added to the smaller net figure, not the larger gross one. To deduct VAT correctly and take VAT off a price, use:</p>
+                <div class="formula-box">
+                    <div class="formula-label">Remove VAT Formula</div>
+                    <code class="formula-code">Net = Gross ÷ (1 + Rate/100)</code>
+                </div>
+                <div class="example-box">
+                    <strong>Example (23% VAT in Ireland):</strong>
+                    <p>For example, to remove 23% VAT from €123, divide €123 by 1.23. The result is €100.00 net, meaning the VAT portion was €23.00. Subtracting 23% of €123 would have wrongly given €94.71, which is why the formula to remove VAT matters.</p>
+                </div>
+            </section>
+        </div>
+
+        <!-- Comprehensive VAT Guide -->
+        <section class="vat-guide card">
+            <h2>Comprehensive VAT Guide for Ireland & UK</h2>
+            <p class="intro">Value Added Tax (VAT) is a consumption tax charged on the sale of goods and services. Understanding rates, thresholds, and cross-border trade calculations is critical for businesses operating in Ireland, Dublin, Northern Ireland, and Great Britain.</p>
+
+            <div class="guide-content">
+                <!-- Ireland VAT Section -->
+                <div class="guide-section">
+                    <h3>Understanding VAT in Ireland</h3>
+                    <p>Value Added Tax in Ireland is administered by the <a href="https://www.revenue.ie" target="_blank" rel="noopener noreferrer">Revenue Commissioners</a>, the national tax and customs authority. Businesses must register for VAT once their turnover exceeds the relevant threshold — currently €42,500 for services and €85,000 for goods in a twelve-month period — though voluntary registration below these limits is also permitted (see our complete <a href="vat-registration-threshold-ireland.html">VAT Thresholds Ireland</a> guide). Once registered, a business charges VAT on its sales, reclaims VAT on eligible purchases, and files periodic returns with Revenue.</p>
+                    
+                    <div class="rates-grid">
+                        <div class="rate-detail-card">
+                            <h4>Standard Rate: 23%</h4>
+                            <p>The 23% standard rate is the default rate and applies to most goods and services that do not fall into a reduced or zero-rated category (see the full breakdown of <a href="vat-rates-ireland.html">VAT Rates Ireland</a>). This covers items such as electronics, furniture, adult clothing, alcohol, soft drinks, bottled water, cosmetics, motor vehicles, fuel, and most professional and consumer services.</p>
+                        </div>
+                        <div class="rate-detail-card">
+                            <h4>Reduced Rate: 13.5%</h4>
+                            <p>The 13.5% reduced rate applies to a range of goods and services including building and construction work, general repair and maintenance, hotel and short-term holiday accommodation, and many tourism-related supplies. It also covers fuel for heating and light such as oil and solid fuels, along with certain other labour-intensive services. Non-EU visitors purchasing items under this category may qualify for tax-free shopping rebates through the <a href="vat-refund-ireland.html">VAT Refund Ireland Retail Export Scheme</a>.</p>
+                        </div>
+                        <div class="rate-detail-card">
+                            <h4>Second Reduced Rate: 9%</h4>
+                            <p>The 9% second reduced rate applies to gas and electricity supplies (extended to 31 December 2030; see details on <a href="vat-on-electricity-ireland.html">VAT on Electricity Ireland</a>), newspapers, e-books, sporting facilities, and the sale of completed apartments. Effective 1 July 2026, restaurant and catering services, hot takeaway food, and hairdressing services were permanently reduced from 13.5% to 9%. Note that hotel accommodation remains at 13.5%, and alcohol served with a meal stays at 23%.</p>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- UK VAT Section -->
+                <div class="guide-section">
+                    <h3>UK VAT Rates Explained</h3>
+                    <p>VAT in the United Kingdom is administered by <a href="https://www.gov.uk/topic/business-tax/vat" target="_blank" rel="noopener noreferrer">HM Revenue & Customs (HMRC)</a>, and businesses must register once taxable turnover passes the £90,000 threshold. Northern Ireland operates under special arrangements set out in the Windsor Framework, meaning it follows UK VAT rates for most purposes while remaining aligned with certain EU VAT rules for goods, which affects trade between NI, Great Britain, and the Republic of Ireland (verify NI and EU trader registrations via our <a href="vat-checker-vies.html">VIES VAT Checker</a>).</p>
+                    
+                    <div class="rates-grid">
+                        <div class="rate-detail-card">
+                            <h4>Standard Rate: 20%</h4>
+                            <p>The 20% standard rate is the default UK rate and applies to the majority of goods and services, including electronics, adult clothing, furniture, alcohol, catering, most professional services, and non-essential consumer purchases. If a product or service is not specifically listed as reduced-rated, zero-rated, or exempt, the 20% rate applies.</p>
+                        </div>
+                        <div class="rate-detail-card">
+                            <h4>Reduced Rate: 5%</h4>
+                            <p>The 5% reduced rate applies to domestic fuel and power such as household gas and electricity, energy-saving materials, and certain residential conversions. It also covers children's car seats and other child safety items, along with mobility aids for older people and some smoking-cessation products.</p>
+                        </div>
+                        <div class="rate-detail-card">
+                            <h4>Zero Rate: 0%</h4>
+                            <p>The zero rate applies to most food and drink (excluding restaurant meals, hot takeaways, and confectionery), books, newspapers, and printed matter, as well as children's clothing and footwear. Zero-rated supplies are still taxable — businesses record them and can reclaim input VAT — but the rate charged to the customer is 0%.</p>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- How to Use Section -->
+                <div class="guide-section">
+                    <h3>How to Use Our VAT Calculator</h3>
+                    <p>Getting a result takes only a few steps:</p>
+                    <ol class="steps-list">
+                        <li><strong>Select your country</strong> — choose Ireland or the UK so the correct preset rates load.</li>
+                        <li><strong>Choose your mode</strong> — select "Add VAT" to apply tax to a net figure, or "Remove VAT" to strip tax out of a gross total.</li>
+                        <li><strong>Enter your amount</strong> — type the figure you want to work from into the input field.</li>
+                        <li><strong>Choose a rate</strong> — pick a preset (23%, 13.5%, 9%, 20%, 5%, or 0%) or enter your own custom rate.</li>
+                        <li><strong>Copy your results</strong> — the net, VAT, and gross amounts calculate instantly; use the copy button to grab any value.</li>
+                        <li><strong>Check the history log</strong> — review your recent calculations in the on-screen history to compare figures without re-entering data.</li>
+                    </ol>
+                </div>
+
+                <!-- FAQ Section (Accordion) -->
+                <div class="guide-section">
+                    <h3>Frequently Asked Questions</h3>
+                    <div class="accordion">
+                        <div class="accordion-item">
+                            <button class="accordion-header">
+                                <span>How do I remove 23% VAT from a price in Ireland?</span>
+                                <svg class="accordion-arrow" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><polyline points="6 9 12 15 18 9"></polyline></svg>
+                            </button>
+                            <div class="accordion-content">
+                                <p>To remove 23% VAT from a price in Ireland, divide the gross amount by 1.23. For example, €123 divided by 1.23 gives a net price of €100, meaning €23 was VAT. Do not subtract 23% directly, as this overstates the deduction and gives an incorrect net figure.</p>
+                            </div>
+                        </div>
+
+                        <div class="accordion-item">
+                            <button class="accordion-header">
+                                <span>What is the VAT rate in Dublin?</span>
+                                <svg class="accordion-arrow" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><polyline points="6 9 12 15 18 9"></polyline></svg>
+                            </button>
+                            <div class="accordion-content">
+                                <p>The VAT rate in Dublin is the same as everywhere else in the Republic of Ireland, since VAT is set nationally rather than by city. The standard rate is 23%, with reduced rates of 13.5% and 9% applying to specific goods and services, and a 0% rate on certain essentials.</p>
+                            </div>
+                        </div>
+
+                        <div class="accordion-item">
+                            <button class="accordion-header">
+                                <span>How does VAT work in Northern Ireland (NI)?</span>
+                                <svg class="accordion-arrow" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><polyline points="6 9 12 15 18 9"></polyline></svg>
+                            </button>
+                            <div class="accordion-content">
+                                <p>Northern Ireland uses UK VAT rates — a 20% standard rate, 5% reduced rate, and 0% zero rate — administered by HMRC. Under the Windsor Framework, NI stays aligned with certain EU VAT rules for goods, which affects cross-border trade with the Republic of Ireland and Great Britain, but services follow standard UK rules.</p>
+                            </div>
+                        </div>
+
+                        <div class="accordion-item">
+                            <button class="accordion-header">
+                                <span>How do I calculate VAT backwards?</span>
+                                <svg class="accordion-arrow" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><polyline points="6 9 12 15 18 9"></polyline></svg>
+                            </button>
+                            <div class="accordion-content">
+                                <p>To calculate VAT backwards, divide the gross (tax-inclusive) price by 1 plus the rate as a decimal. For 23%, divide by 1.23; for 20%, divide by 1.20. This gives the net price, and subtracting the net from the gross reveals the VAT amount that was included in the total.</p>
+                            </div>
+                        </div>
+
+                        <div class="accordion-item">
+                            <button class="accordion-header">
+                                <span>What is the VAT on €100 or £100?</span>
+                                <svg class="accordion-arrow" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><polyline points="6 9 12 15 18 9"></polyline></svg>
+                            </button>
+                            <div class="accordion-content">
+                                <p>Adding 23% VAT to €100 gives €23 of VAT and a €123 gross total, while adding 20% VAT to £100 gives £20 of VAT and a £120 gross total. If €100 or £100 is instead the gross figure, the VAT already included is €18.70 (Ireland) or £16.67 (UK).</p>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </section>
+    </main>
+
+    <footer class="app-footer">
+        <div class="container">
+            <div class="footer-grid">
+                <div class="footer-col">
+                    <h4>Information</h4>
+                    <ul class="footer-links">
+                        <li><a href="about-us.html">About Us</a></li>
+                        <li><a href="terms-conditions.html">Terms & Conditions</a></li>
+                        <li><a href="privacy-policy.html">Privacy Policy</a></li>
+                    </ul>
+                </div>
+                <div class="footer-col">
+                    <h4>Sitemaps</h4>
+                    <ul class="footer-links">
+                        <li><a href="sitemap.html">HTML Sitemap</a></li>
+                        <li><a href="sitemap.xml" target="_blank">XML Sitemap</a></li>
+                    </ul>
+                </div>
+                <div class="footer-col">
+                    <h4>Featured Guides</h4>
+                    <ul class="footer-links">
+                        <li><a href="vat-rates-ireland.html">VAT Rates Ireland</a></li>
+                        <li><a href="vat-registration-threshold-ireland.html">VAT Thresholds Ireland</a></li>
+                        <li><a href="vat-on-electricity-ireland.html">VAT on Electricity</a></li>
+                        <li><a href="vat-checker-vies.html">VIES VAT Checker</a></li>
+                        <li><a href="vat-refund-ireland.html">Tourist VAT Refunds</a></li>
+                    </ul>
+                </div>
+            </div>
+            <div class="footer-bottom">
+                <p>&copy; 2026 calculate-vat.com. All rights reserved.</p>
+                <p class="disclaimer">Disclaimer: While we strive to ensure absolute mathematical and tax accuracy, these calculations are for informational purposes. Please consult an accountant or tax professional before making financial decisions.</p>
+                <p class="footer-author">Made with ❤️ by <a href="https://affanahmed.de" target="_blank" rel="noopener noreferrer">Affan Ahmed</a></p>
+            </div>
+        </div>
+    </footer>
+
+    <!-- App Logic script -->
+    <script src="app.js"></script>
+</body>
+</html>
