@@ -16,6 +16,16 @@ document.addEventListener('DOMContentLoaded', () => {
     // Initialize Global Search Bar
     initSiteSearch();
 
+    // Mobile Navigation Toggle
+    const mobileMenuToggle = document.getElementById('mobile-menu-toggle');
+    const appNavigation = document.getElementById('app-navigation');
+    if (mobileMenuToggle && appNavigation) {
+        mobileMenuToggle.addEventListener('click', () => {
+            appNavigation.classList.toggle('open');
+            mobileMenuToggle.classList.toggle('active');
+        });
+    }
+
     // Determine which page widgets to load
     const hasCalculator = document.getElementById('amount-input') !== null;
     const hasThresholdTracker = document.getElementById('threshold-turnover') !== null;
