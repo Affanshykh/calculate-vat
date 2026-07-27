@@ -30,6 +30,15 @@
                 </svg>
                 <span class="logo-text">Calculate<span>VAT</span></span>
             </a>
+            
+            <div class="header-search">
+                <input type="text" id="site-search-input" placeholder="Search guides & tools..." aria-label="Search site">
+                <button id="site-search-btn" aria-label="Submit search">
+                    <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><circle cx="11" cy="11" r="8"></circle><line x1="21" y1="21" x2="16.65" y2="16.65"></line></svg>
+                </button>
+                <div class="search-results-dropdown" id="search-results"></div>
+            </div>
+
             <nav class="app-nav">
                 <a href="index.html" class="nav-link">Home</a>
                 <a href="vat-rates-ireland.html" class="nav-link">VAT Rates IE</a>
@@ -40,6 +49,14 @@
             </nav>
         </div>
     </header>
+
+    <nav class="breadcrumbs" aria-label="Breadcrumb">
+        <div class="container">
+            <a href="index.html">Home</a>
+            <span class="separator">/</span>
+            <span class="current">HTML Sitemap</span>
+        </div>
+    </nav>
 
     <main class="container" style="padding-top: 3rem; padding-bottom: 3rem;">
         <article class="card" style="max-width: 800px; margin: 0 auto; padding: 2.5rem;">

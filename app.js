@@ -13,6 +13,9 @@ document.addEventListener('DOMContentLoaded', () => {
     // Global Nav Active Class Syncing
     syncNavLinks();
 
+    // Initialize Global Search Bar
+    initSiteSearch();
+
     // Determine which page widgets to load
     const hasCalculator = document.getElementById('amount-input') !== null;
     const hasThresholdTracker = document.getElementById('threshold-turnover') !== null;
@@ -941,5 +944,132 @@ document.addEventListener('DOMContentLoaded', () => {
 
         refundRateSelect.addEventListener('change', calculateRefund);
         calculateRefund();
+    }
+
+    // ==========================================================================
+    // WIDGET 5: Global Site Search Autocomplete Widget
+    // ==========================================================================
+    function initSiteSearch() {
+        const searchInput = document.getElementById('site-search-input');
+        const resultsDropdown = document.getElementById('search-results');
+        const searchBtn = document.getElementById('site-search-btn');
+
+        if (!searchInput || !resultsDropdown) return;
+
+        const searchIndex = [
+            { title: "Home & VAT Calculator", url: "index.html", keywords: "calculator add remove standard vat rate ireland uk formula gross net" },
+            { title: "VAT Rates Ireland 2026", url: "vat-rates-ireland.html", keywords: "rates standard 23 reduced 13.5 second 9 super reduced 4.8 food services exempt zero" },
+            { title: "VAT Registration & Thresholds Ireland", url: "vat-registration-threshold-ireland.html", keywords: "registration threshold sole trader goods 85000 services 42500 voluntary limit ros tr1 tr2" },
+            { title: "VAT on Electricity Ireland", url: "vat-on-electricity-ireland.html", keywords: "electricity gas energy pso levy standing charge billing utility carbon tax support" },
+            { title: "VIES VAT Number Checker", url: "vat-checker-vies.html", keywords: "checker vies validation verify format prefix ie gb xi hmrc cross-border trade" },
+            { title: "Tourist VAT Refund Ireland", url: "vat-refund-ireland.html", keywords: "refund refund tourist retail export scheme dublin airport fexco horizon non-eu tax free shopping" },
+            { title: "About Us", url: "about-us.html", keywords: "about mission contact info team calculate vat" },
+            { title: "Terms & Conditions", url: "terms-conditions.html", keywords: "terms conditions rules disclaimer agreement liability" },
+            { title: "Privacy Policy", url: "privacy-policy.html", keywords: "privacy policy data cookies storage safety local" },
+            { title: "Sitemap", url: "sitemap.html", keywords: "sitemap index list links guide pages compliance xml" }
+        ];
+
+        let highlightedIndex = -1;
+        let filteredItems = [];
+
+        function renderResults(results) {
+            resultsDropdown.innerHTML = '';
+            filteredItems = results;
+            highlightedIndex = -1;
+
+            if (results.length === 0) {
+                resultsDropdown.innerHTML = '<div class="search-empty">No matching pages found</div>';
+                resultsDropdown.classList.add('active');
+                return;
+            }
+
+            results.forEach((item, index) => {
+                const a = document.createElement('a');
+                a.href = item.url;
+                a.className = 'search-item';
+                a.dataset.index = index;
+                a.innerHTML = `
+                    <div class="search-item-title">${item.title}</div>
+                    <div class="search-item-url">${item.url}</div>
+                `;
+                resultsDropdown.appendChild(a);
+            });
+            resultsDropdown.classList.add('active');
+        }
+
+        function performSearch() {
+            const query = searchInput.value.toLowerCase().trim();
+            if (!query) {
+                resultsDropdown.classList.remove('active');
+                filteredItems = [];
+                return;
+            }
+
+            const terms = query.split(/\s+/);
+            const matches = searchIndex.filter(item => {
+                return terms.every(term => 
+                    item.title.toLowerCase().includes(term) || 
+                    item.keywords.toLowerCase().includes(term)
+                );
+            });
+
+            renderResults(matches);
+        }
+
+        searchInput.addEventListener('input', performSearch);
+        
+        searchInput.addEventListener('focus', () => {
+            if (searchInput.value.trim()) {
+                performSearch();
+            }
+        });
+
+        document.addEventListener('click', (e) => {
+            if (!searchInput.contains(e.target) && !resultsDropdown.contains(e.target) && !searchBtn.contains(e.target)) {
+                resultsDropdown.classList.remove('active');
+            }
+        });
+
+        searchInput.addEventListener('keydown', (e) => {
+            const items = resultsDropdown.querySelectorAll('.search-item');
+            if (!resultsDropdown.classList.contains('active') || items.length === 0) return;
+
+            if (e.key === 'ArrowDown') {
+                e.preventDefault();
+                highlightedIndex = (highlightedIndex + 1) % items.length;
+                updateHighlight(items);
+            } else if (e.key === 'ArrowUp') {
+                e.preventDefault();
+                highlightedIndex = (highlightedIndex - 1 + items.length) % items.length;
+                updateHighlight(items);
+            } else if (e.key === 'Enter') {
+                e.preventDefault();
+                if (highlightedIndex >= 0 && highlightedIndex < filteredItems.length) {
+                    window.location.href = filteredItems[highlightedIndex].url;
+                } else if (filteredItems.length > 0) {
+                    window.location.href = filteredItems[0].url;
+                }
+            } else if (e.key === 'Escape') {
+                resultsDropdown.classList.remove('active');
+                searchInput.blur();
+            }
+        });
+
+        function updateHighlight(items) {
+            items.forEach((item, index) => {
+                if (index === highlightedIndex) {
+                    item.classList.add('highlighted');
+                    item.scrollIntoView({ block: 'nearest' });
+                } else {
+                    item.classList.remove('highlighted');
+                }
+            });
+        }
+
+        searchBtn.addEventListener('click', () => {
+            if (filteredItems.length > 0) {
+                window.location.href = filteredItems[0].url;
+            }
+        });
     }
 });
