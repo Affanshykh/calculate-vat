@@ -67,12 +67,17 @@ document.addEventListener('DOMContentLoaded', () => {
     // ==========================================================================
     function syncNavLinks() {
         const path = window.location.pathname;
-        const page = path.split('/').pop() || 'index.html';
+        const cleanPath = path.replace(/^\/|\/$/g, '').replace(/\.html$/, '');
+        const currentPage = cleanPath || 'index';
+
         const navLinks = document.querySelectorAll('.nav-link');
         
         navLinks.forEach(link => {
-            const href = link.getAttribute('href');
-            if (href === page) {
+            const href = link.getAttribute('href') || '';
+            const cleanHref = href.replace(/^\/|\/$/g, '').replace(/\.html$/, '');
+            const linkPage = cleanHref || 'index';
+            
+            if (currentPage === linkPage) {
                 link.classList.add('active');
             } else {
                 link.classList.remove('active');
