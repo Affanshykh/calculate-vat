@@ -18,6 +18,78 @@
     
     <!-- CSS stylesheet -->
     <link rel="stylesheet" href="styles.css">
+    
+    <!-- Structured Data (JSON-LD) for SEO -->
+    <script type="application/ld+json">
+    {
+      "@context": "https://schema.org",
+      "@graph": [
+        {
+          "@type": "WebPage",
+          "@id": "https://calculate-vat.com/vat-checker-vies.html#webpage",
+          "url": "https://calculate-vat.com/vat-checker-vies.html",
+          "name": "VIES VAT Number Checker | Verify Irish, EU & UK VAT",
+          "description": "Check & validate any VAT number free. Verify Irish (IE), EU via VIES and UK (GB) numbers with HMRC. Instant format validation for tax-free trade."
+        },
+        {
+          "@type": "BreadcrumbList",
+          "@id": "https://calculate-vat.com/vat-checker-vies.html#breadcrumb",
+          "itemListElement": [
+            {
+              "@type": "ListItem",
+              "position": 1,
+              "name": "Home",
+              "item": "https://calculate-vat.com/"
+            },
+            {
+              "@type": "ListItem",
+              "position": 2,
+              "name": "VIES VAT Checker",
+              "item": "https://calculate-vat.com/vat-checker-vies.html"
+            }
+          ]
+        },
+        {
+          "@type": "FAQPage",
+          "@id": "https://calculate-vat.com/vat-checker-vies.html#faq",
+          "mainEntity": [
+            {
+              "@type": "Question",
+              "name": "What is a VIES VAT checker?",
+              "acceptedAnswer": {
+                "@type": "Answer",
+                "text": "A VIES VAT checker is a free European Commission tool that verifies whether an EU (or Northern Ireland XI) VAT number is valid in real time. It queries each member state's national VAT database and returns a \"valid\" or \"invalid\" result, usually with the registered business name and address."
+              }
+            },
+            {
+              "@type": "Question",
+              "name": "How do I verify an Irish VAT number?",
+              "acceptedAnswer": {
+                "@type": "Answer",
+                "text": "To verify an Irish VAT number, first check its format — IE followed by 7 digits and 1 or 2 letters — then confirm it on the VIES portal by selecting \"Ireland\" and entering the number without the IE prefix. VIES checks Revenue's live records and returns whether the number is currently valid."
+              }
+            },
+            {
+              "@type": "Question",
+              "name": "What does it mean if a VAT number is invalid on VIES?",
+              "acceptedAnswer": {
+                "@type": "Answer",
+                "text": "An invalid result usually means the number is mistyped, not yet active, deregistered, or entered under the wrong country. It can also mean the business is not authorised for intra-EU trade. Note that GB (UK) numbers always show invalid on VIES since 2021 — use HMRC's checker instead."
+              }
+            },
+            {
+              "@type": "Question",
+              "name": "Can I look up a VAT number using a company name?",
+              "acceptedAnswer": {
+                "@type": "Answer",
+                "text": "No. VIES and HMRC only validate a VAT number you already have; you cannot search by company name to find a business's number. To obtain a partner's VAT number, request it directly from the business or take it from their invoice, then validate it."
+              }
+            }
+          ]
+        }
+      ]
+    }
+    </script>
 </head>
 <body class="light-theme country-ie" data-page-type="vies-checker">
     <header class="app-header">

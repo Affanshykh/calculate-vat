@@ -23,16 +23,122 @@
     <script type="application/ld+json">
     {
       "@context": "https://schema.org",
-      "@type": "FinancialCalculator",
-      "name": "Ireland & UK VAT Calculator",
-      "description": "An interactive tool to calculate VAT additions and removals using current Irish and UK VAT rates.",
-      "url": "https://calculate-vat.com/",
-      "category": "Tax Calculator",
-      "offers": {
-        "@type": "Offer",
-        "price": "0.00",
-        "priceCurrency": "EUR"
-      }
+      "@graph": [
+        {
+          "@type": "WebSite",
+          "@id": "https://calculate-vat.com/#website",
+          "name": "Calculate VAT",
+          "alternateName": ["Ireland & UK VAT Calculator", "CalculateVAT"],
+          "url": "https://calculate-vat.com/"
+        },
+        {
+          "@type": "Organization",
+          "@id": "https://calculate-vat.com/#organization",
+          "name": "Calculate VAT",
+          "url": "https://calculate-vat.com/",
+          "logo": "https://calculate-vat.com/favicon.svg",
+          "sameAs": [
+            "https://github.com/Affanshykh/calculate-vat"
+          ]
+        },
+        {
+          "@type": "FinancialCalculator",
+          "@id": "https://calculate-vat.com/#calculator",
+          "name": "Ireland & UK VAT Calculator",
+          "description": "Calculate VAT additions, removals, and backwards percentages for Ireland and the UK instantly using statutory tax rates.",
+          "url": "https://calculate-vat.com/",
+          "category": "Tax Calculator",
+          "offers": {
+            "@type": "Offer",
+            "price": "0.00",
+            "priceCurrency": "EUR"
+          }
+        },
+        {
+          "@type": "FAQPage",
+          "@id": "https://calculate-vat.com/#faq",
+          "mainEntity": [
+            {
+              "@type": "Question",
+              "name": "How do I remove 23% VAT from a price in Ireland?",
+              "acceptedAnswer": {
+                "@type": "Answer",
+                "text": "To remove 23% VAT from a price in Ireland, divide the gross amount by 1.23. For example, €123 divided by 1.23 gives a net price of €100, meaning €23 was VAT. Do not subtract 23% directly, as this overstates the deduction and gives an incorrect net figure."
+              }
+            },
+            {
+              "@type": "Question",
+              "name": "What is the VAT rate in Dublin?",
+              "acceptedAnswer": {
+                "@type": "Answer",
+                "text": "The VAT rate in Dublin is the same as everywhere else in the Republic of Ireland, since VAT is set nationally rather than by city. The standard rate is 23%, with reduced rates of 13.5% and 9% applying to specific goods and services, and a 0% rate on certain essentials."
+              }
+            },
+            {
+              "@type": "Question",
+              "name": "How does VAT work in Northern Ireland (NI)?",
+              "acceptedAnswer": {
+                "@type": "Answer",
+                "text": "Northern Ireland uses UK VAT rates — a 20% standard rate, 5% reduced rate, and 0% zero rate — administered by HMRC. Under the Windsor Framework, NI stays aligned with certain EU VAT rules for goods, which affects cross-border trade with the Republic of Ireland and Great Britain, but services follow standard UK rules."
+              }
+            },
+            {
+              "@type": "Question",
+              "name": "How do I calculate VAT backwards?",
+              "acceptedAnswer": {
+                "@type": "Answer",
+                "text": "To calculate VAT backwards, divide the gross (tax-inclusive) price by 1 plus the rate as a decimal. For 23%, divide by 1.23; for 20%, divide by 1.20. This gives the net price, and subtracting the net from the gross reveals the VAT amount that was included in the total."
+              }
+            },
+            {
+              "@type": "Question",
+              "name": "What is the VAT on €100 or £100?",
+              "acceptedAnswer": {
+                "@type": "Answer",
+                "text": "Adding 23% VAT to €100 gives €23 of VAT and a €123 gross total, while adding 20% VAT to £100 gives £20 of VAT and a £120 gross total. If €100 or £100 is instead the gross figure, the VAT already included is €18.70 (Ireland) or £16.67 (UK)."
+              }
+            }
+          ]
+        },
+        {
+          "@type": "HowTo",
+          "@id": "https://calculate-vat.com/#howto",
+          "name": "How to Use Our VAT Calculator",
+          "description": "Step-by-step instructions to add VAT, remove VAT, or view calculation history using the interactive calculator.",
+          "step": [
+            {
+              "@type": "HowToStep",
+              "name": "Select your country",
+              "text": "Choose Ireland or the UK so the correct preset rates load.",
+              "url": "https://calculate-vat.com/#step1"
+            },
+            {
+              "@type": "HowToStep",
+              "name": "Choose your mode",
+              "text": "Select 'Add VAT' to apply tax to a net figure, or 'Remove VAT' to strip tax out of a gross total.",
+              "url": "https://calculate-vat.com/#step2"
+            },
+            {
+              "@type": "HowToStep",
+              "name": "Enter your amount",
+              "text": "Type the figure you want to work from into the input field.",
+              "url": "https://calculate-vat.com/#step3"
+            },
+            {
+              "@type": "HowToStep",
+              "name": "Choose a rate",
+              "text": "Pick a preset (23%, 13.5%, 9%, 20%, 5%, or 0%) or enter your own custom rate.",
+              "url": "https://calculate-vat.com/#step4"
+            },
+            {
+              "@type": "HowToStep",
+              "name": "Copy or save results",
+              "text": "Use the copy button to grab values or the save/share/export buttons to preserve calculations.",
+              "url": "https://calculate-vat.com/#step5"
+            }
+          ]
+        }
+      ]
     }
     </script>
 </head>
